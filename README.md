@@ -114,3 +114,7 @@ The broker-style model has now been independently calibrated with Black-76 using
 
 ### Phase 9 execution result
 The broker model calibration is now complete and the close-based execution stress is complete. Using current Paytm Money's stated ₹10 per unique executed F&O order as a brokerage-only operational reference, eight entry/exit orders imply ₹80 brokerage per basket before other statutory/exchange charges. Break-even premium slippage is approximately **0.315% NIFTY / 0.370% SENSEX** in that brokerage-only scenario. Under the locked ₹160 research-cost proxy it is **0.2567% / 0.2971%**. Historical bid/ask and all-in charge reconstruction remains the final Phase 9 evidence gap.
+
+
+### Phase 9 robustness result
+For the current uploaded strategy at 0.5% slippage + ₹160/cycle, 6-block CPCV produced positive test-block P&L in 40.0% of NIFTY and 46.7% of SENSEX combinations; median test mean P&L remained negative. The untouched final block was negative in both indices (-₹5,003 NIFTY; -₹2,991 SENSEX). Bootstrap 95% intervals for mean trade P&L included zero. Thus the current evidence is **execution-sensitive and statistically inconclusive**, not a robustly validated positive edge.
