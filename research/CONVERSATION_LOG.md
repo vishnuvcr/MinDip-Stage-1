@@ -78,3 +78,8 @@ Black-76 calibration using the screenshot's weekly and monthly futures reproduce
 ## 2026-09-23 — Phase 9 execution stress completed
 
 The broker-model calibration and close-based execution-cost stress both completed. Black-76 reproduced the screenshot's intrinsic value (₹12,103 vs ₹12,100), delta (-0.04094 vs -0.041), vega (-0.6685 vs -0.67), and POP (95.38% vs 96%). Execution-cost stress shows break-even slippage of 0.3150% NIFTY and 0.3701% SENSEX under an illustrative ₹80 current-brokerage-only cost, versus 0.2567% and 0.2971% under the locked ₹160 research cost. The remaining evidence gap is historical bid/ask/spread and date-specific all-in charges.
+
+
+## 2026-09-23 — Phase 9 current-strategy robustness completed
+
+The corrected current four-leg strategy was subjected to bootstrap statistics, six-block CPCV, and an untouched final chronology block. At 0.5% slippage plus ₹160/cycle, CPCV positive test combinations occurred in 40.0% of NIFTY and 46.7% of SENSEX combinations, with negative median test means. The untouched final block was negative for both. Bootstrap intervals for mean P&L included zero. Combined with the execution thresholds and broker-model reconciliation, the current evidence is execution-sensitive and statistically inconclusive rather than robustly validated.
