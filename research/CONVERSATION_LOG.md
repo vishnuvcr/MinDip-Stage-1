@@ -41,3 +41,8 @@ Phase 4 robustness/cost stress completed successfully. Both indices remained neg
 ## 2026-09-22 — Phase 5 completed
 
 CPCV diagnostics over six chronology blocks and 15 two-block test combinations completed successfully. Positive test-block net P&L occurred in 6.7% of NIFTY combinations and 20.0% of SENSEX combinations; the untouched final block was negative for both. DSR and PBO were explicitly marked not estimable because only one prespecified strategy exists. Phase 6 is the final manuscript gate.
+
+
+## 2026-09-22 — Phase 6 completed
+
+The final manuscript, figures, appendices, final conclusion, and manuscript gate checklist were committed. The Phase 6 conclusion is that the locked specification did not pass the historical promotion gate. No alternative parameter set was promoted; any future candidate family must begin as a separate preregistered experiment.
