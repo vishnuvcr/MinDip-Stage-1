@@ -33,13 +33,10 @@ jobs:
         run: python -m pip install pandas duckdb numpy
       - name: Run screenshot-exact backtest
         env:
-          START: \${{ inputs.start || '2025-10-01' }}
-          END: \${{ inputs.end || '2026-05-27' }}
+          START: ${{ inputs.start || '2025-10-01' }}
+          END: ${{ inputs.end || '2026-05-27' }}
         run: |
-          python scripts/phase7_screenshot_strategy.py \
-            --start "$START" \
-            --end "$END" \
-            --output data/cache/phase7
+          python scripts/phase7_screenshot_strategy.py             --start "$START"             --end "$END"             --output data/cache/phase7
       - name: Verify screenshot strike mapping
         run: cat data/cache/phase7/screenshot_strike_demo.json
       - name: Show results
