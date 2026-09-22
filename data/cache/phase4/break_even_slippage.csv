@@ -1,0 +1,3 @@
+ticker,trades,zero_slippage_zero_cost_pnl,zero_slippage_primary_cost_pnl,break_even_slippage_decimal,break_even_slippage_pct
+NIFTY,33,-16903.999999999985,-22183.999999999985,-0.00489960037689641,-0.489960037689641
+SENSEX,28,-13599.200000000006,-18079.200000000004,-0.00589034711839809,-0.5890347118398089
