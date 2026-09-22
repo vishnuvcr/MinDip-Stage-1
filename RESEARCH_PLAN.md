@@ -96,7 +96,7 @@ Completed in this phase:
 Remaining gate:
 - direct bid/ask or spread-aware execution;
 - historical broker/statutory fee reconstruction;
-- chronology/CPCV and untouched holdout for the corrected strategy;
+- chronology/CPCV and untouched holdout for the corrected strategy — complete;
 - exact payoff/max-profit/max-loss replication if possible;
 - separate current-strategy manuscript addendum.
 
