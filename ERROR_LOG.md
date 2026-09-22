@@ -100,3 +100,9 @@
 - Finding: the displayed ₹12,100 intrinsic value is reproduced by valuing weekly legs at 23,436.90 and monthly legs at 23,510.00; using a single spot price would not reproduce it.
 - Consequence: the broker's payoff chart is a multi-expiry model, not a single-expiry intrinsic payoff.
 - Action: Phase 9 must model the two expiry forwards/futures separately before judging historical equivalence.
+
+
+### E-0017 — Phase 9 reconciliation commit hit a binary workbook rebase conflict
+- Observed: Black-76 calibration and all verification assertions completed successfully, but the workflow failed while rebasing because the generated Excel workbook was added concurrently to the branch.
+- Fix: workflow cache commits now stage only CSV/JSON outputs for the reconciliation phase; the existing workbook remains available but is not part of the race-prone automated commit.
+- Prevention: avoid binary generated artifacts in concurrent research workflow commits; keep machine-readable canonical outputs in CSV/JSON.
