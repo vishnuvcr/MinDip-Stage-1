@@ -11,7 +11,7 @@ on:
       end:
         description: Inclusive sample end date
         required: false
-        default: "2026-09-22"
+        default: "2026-05-27"
         type: string
   push:
     paths:
@@ -19,6 +19,7 @@ on:
       - "docs/DATA_SOURCE_REGISTRY.md"
       - "docs/PHASE2_DATA_AUDIT.md"
       - ".github/workflows/phase2-data-audit.yml"
+      - "data/calendar/exchange_holidays.csv"
 
 permissions:
   contents: write
@@ -42,7 +43,7 @@ jobs:
       - name: Run remote data extraction and audit
         env:
           START_DATE: ${{ inputs.start || '2025-10-01' }}
-          END_DATE: ${{ inputs.end || '2026-09-22' }}
+          END_DATE: ${{ inputs.end || '2026-05-27' }}
         run: |
           python scripts/phase2_remote_extract.py             --start "$START_DATE"             --end "$END_DATE"             --output data/cache/phase2
 
