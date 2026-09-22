@@ -61,3 +61,10 @@ The user supplied two new screenshots. The editor screenshot is authoritative: N
 ## 2026-09-23 — Phase 8 current-strategy backtest completed
 
 The latest screenshots were checked directly. The exact current basket was locked as SELL monthly ATM PE, BUY monthly ATM−2 CE, BUY weekly ATM+2 PE, SELL weekly ATM CE. The corrected backtest used the existing Phase 2 exact-contract quote cache and completed successfully: NIFTY 33 cycles, net P&L ₹-11,014.58, ROC -7.34%; SENSEX 28 cycles, net P&L ₹-6,227.26, ROC -4.15%. Zero-slippage plus ₹160 fixed cost remained positive, while 0.5% slippage turned both negative. The current strategy therefore requires execution-quality validation before any stronger conclusion.
+
+
+## 2026-09-23 — New payoff/summary screenshots reconciled
+
+The latest screenshots reveal an important valuation detail: the broker's Summary uses separate target-day futures for the weekly and monthly legs. At spot 23,329, weekly future = 23,436.90 and monthly future = 23,510.00. The intrinsic-value calculation exactly reproduces the displayed ₹12,100 (approximately): monthly short 23,350 PE = 0, monthly long 23,250 CE = +260; weekly long 23,450 PE = +13.10, weekly short 23,350 CE = -86.90; total = 186.20 points × 65 = ₹12,103. The displayed net premium is ₹180.75 × 65 = ₹11,748.75, so intrinsic minus premium is about +₹354, while the app's Time Value is shown as about -₹351 due to its model/rounding. This confirms the payoff is a multi-expiry forward/futures valuation, not a single common spot-expiry payoff.
+
+The Summary also shows POP 96%, max profit ₹5,961, max loss ₹138, reward/risk 43, and break-evens 23,448 and 23,487. These are broker-model outputs and must not be treated as historical probabilities or guaranteed outcomes. The next robustness work must reproduce this multi-expiry valuation convention before comparing historical P&L to the chart.
