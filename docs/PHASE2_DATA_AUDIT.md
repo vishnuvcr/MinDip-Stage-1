@@ -29,3 +29,9 @@ The source data are then used to check whether the exchange actually listed the 
 ## Execution proxy
 
 The input is OHLC, not bid/ask. The locked primary execution model applies 0.5% adverse premium slippage to every leg on both entry and exit. A later phase must repeat the test with bid/ask or spread-aware execution before production claims.
+
+## Critical correction recorded
+
+Do not infer exchange holidays from missing observations in the spot dataset. The initial implementation did this and produced incorrect monthly expiry dates, including SENSEX October 2025 and NIFTY May 2026. The corrected implementation uses the explicit calendar file and preserves missing-data conditions separately.
+
+The corrected primary comparison window is 2025-10-01 through 2026-05-27.
