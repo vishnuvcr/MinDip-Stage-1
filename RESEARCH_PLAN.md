@@ -85,7 +85,8 @@ Gate achieved:
 - separate current-strategy metrics and friction decomposition produced.
 
 ### Phase 9 — Current-strategy robustness
-Status: In progress — broker model and close-based cost stress complete; execution-quality validation outstanding
+Status: Complete with execution-data limitation
+Conclusion: execution-sensitive and statistically inconclusive. No parameter optimization or production promotion. Further research requires historical bid/ask/market-depth or equivalent execution-quality data and exact date-specific all-in fee reconstruction.
 Completed in this phase:
 - separate weekly/monthly futures recognized;
 - Black-76 leg IV calibration;
