@@ -1,0 +1,59 @@
+{
+  "start": "2025-10-01",
+  "end": "2026-09-22",
+  "strategy": "locked four-leg reverse-calendar",
+  "slippage_rate": 0.005,
+  "fixed_cost_per_cycle": 160.0,
+  "capital_denominator": 150000.0,
+  "options_source_revision": "8f7739c",
+  "files": {
+    "NIFTY_completed_cycles.csv": {
+      "bytes": 4160,
+      "sha256": "c9a916ab58cf9a3b11b24a139ff3e6f8f224a0d7c1b5846e62e472650bb0a5bc"
+    },
+    "NIFTY_cycles_target.csv": {
+      "bytes": 3243,
+      "sha256": "076aa44295a02421461b3ddc22a00871b839830d30150f99dcc87493a3d95fae"
+    },
+    "NIFTY_legs_quotes.csv": {
+      "bytes": 36129,
+      "sha256": "479a88ea666e1ae31b2b5f6eb149a8806b0c7994a62262ba907df052f26d30a1"
+    },
+    "NIFTY_selected_legs.csv": {
+      "bytes": 40478,
+      "sha256": "ec42ef682fa78708e4073afdd896c7fe2c60971367fa072e80c8c9eee7f8bba5"
+    },
+    "NIFTY_spot_0930.csv": {
+      "bytes": 75895,
+      "sha256": "de38f85b5aa1a3610767b54173f53c90c032477847d421ed97b5cbbb95e79a3a"
+    },
+    "SENSEX_completed_cycles.csv": {
+      "bytes": 4194,
+      "sha256": "a05072c5ef48291fed1742679ba509eae0a13cc0783837c8c7a0274c193a22ca"
+    },
+    "SENSEX_cycles_target.csv": {
+      "bytes": 3671,
+      "sha256": "3bd88675be935466faa49c9ce11cdf82e949e14ede13545836322a17717db337"
+    },
+    "SENSEX_legs_quotes.csv": {
+      "bytes": 39674,
+      "sha256": "a43ceb1329b920bbe80a0e4ff64d00cd39f38ccda5b392e12c073d991989bd4f"
+    },
+    "SENSEX_selected_legs.csv": {
+      "bytes": 42963,
+      "sha256": "d0bade401c7ff79b8c835de3971812b93903e5fcfc5c3868e16cd977ff6ab8d8"
+    },
+    "SENSEX_spot_0930.csv": {
+      "bytes": 88679,
+      "sha256": "559bfc6c7ef63b01431034e7e51e3d9395839b417801c0f5d78a1f3e23cd0aee"
+    },
+    "cross_index_metrics.csv": {
+      "bytes": 584,
+      "sha256": "e42284a2705c17fbb31c8cab5aef9b50c8d1ed2b767591f2b18a3fa041e70cdd"
+    },
+    "data_audit_summary.csv": {
+      "bytes": 905,
+      "sha256": "27403716e62467ab1dc27b032b9990f81ec50700b52f9a5d8e63698854211212"
+    }
+  }
+}
