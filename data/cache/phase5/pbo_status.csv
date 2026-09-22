@@ -1,0 +1,3 @@
+ticker,pbo_status,reason,positive_cpcv_path_fraction_pct
+NIFTY,not_estimable,"Only one locked primary strategy specification was tested; cost/slippage grid is sensitivity analysis, not independent strategy trials.",6.666666666666667
+SENSEX,not_estimable,"Only one locked primary strategy specification was tested; cost/slippage grid is sensitivity analysis, not independent strategy trials.",20.0

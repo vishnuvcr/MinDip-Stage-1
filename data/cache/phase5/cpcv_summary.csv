@@ -1,0 +1,3 @@
+ticker,trades,cpcv_blocks,test_blocks_per_path,paths,positive_path_fraction_pct,median_test_sharpe,mean_test_sharpe,median_test_pnl,all_trade_sharpe
+NIFTY,33,6,2,15,6.666666666666667,-0.4289460410858999,-0.42548670640774816,-17317.32499999993,-0.4254935448363359
+SENSEX,28,6,2,15,20.0,-0.583275746748017,-0.4380166982844253,-10082.59999999996,-0.4001145229565493
