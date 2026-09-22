@@ -71,3 +71,8 @@ The corrected 2025-10-01 to 2026-05-27 locked backtest produced 33 complete NIFT
 ## Phase 5 result
 
 CPCV over 15 two-block test combinations remained predominantly negative: positive test-block net P&L occurred in 6.7% of combinations for NIFTY and 20.0% for SENSEX. The untouched final chronology block was negative for both. Multiple-trial DSR and PBO are correctly marked not estimable because the research contains one prespecified strategy rather than a post-hoc candidate family. Sign-flip permutation p-values were 0.02077 (NIFTY) and 0.04251 (SENSEX); these are diagnostics, not a strategy-selection device. Phase 6 is the final manuscript gate.
+
+
+## Final Phase 6 conclusion
+
+The complete research manuscript is in research/MIN_DIP_RESEARCH_MANUSCRIPT.md and the final conclusion is in docs/FINAL_CONCLUSION.md. The locked specification did not pass the historical promotion gate: both NIFTY and SENSEX were negative under the primary model, negative under the zero-friction counterfactual, and predominantly negative under chronology robustness diagnostics. No alternative parameter set is promoted from the observed sample.
