@@ -37,3 +37,10 @@
 - Cause: the workflow committed data from an older checkout while later documentation commits had advanced the branch.
 - Fix: changed the workflow to fetch, rebase onto the current remote branch, and then push the cache commit.
 - Prevention: never push generated research artifacts from a long-running workflow without rebasing against the latest branch tip.
+
+
+### E-0007 — Missing spot observations were initially misclassified as holidays
+- Observed: The first Phase 2 calendar logic derived trading dates from the spot dataset itself. This produced incorrect expiry rolls when the spot source had a missing day.
+- Impact: Several monthly expiries were assigned to the wrong calendar date, including SENSEX October 2025 and NIFTY May 2026.
+- Fix: Added an explicit exchange holiday calendar and separated holiday logic from spot-data availability. The sample end was also aligned to the common spot-data coverage date of 2026-05-27.
+- Prevention: Never infer exchange calendars from missing market observations; calendar provenance is now an independent research input.
