@@ -5,9 +5,9 @@ Research repository for a reproducible, cost-aware, multi-leg index-options back
 ## Current status
 
 - Phase 0 — Governance & reproducibility: **complete**
-- Phase 1 — Four-leg reverse-calendar implementation: **in progress**
+- Phase 1 — Four-leg reverse-calendar implementation: **complete pending CI/data validation**
 - Primary strategy specification: locked from the user request; no optimization has been performed.
-- Data status: no market dataset is committed yet. Unit tests use deterministic synthetic fixtures; production results require a point-in-time option dataset plus spot observations.
+- Data status: no production market dataset is committed yet. Deterministic synthetic tests are included; historical performance is not claimed.
 
 ## Repository map
 
@@ -25,19 +25,25 @@ Research repository for a reproducible, cost-aware, multi-leg index-options back
 | docs/ | Strategy, assumptions, sources, and phase results |
 | .github/workflows/ | Manual/CI research workflows |
 
-## Research scope
+## Phase 1 implementation
 
-The backtest models four legs:
+The reference engine in src/multileg_options_backtest.py supports both NIFTY and SENSEX dynamically. It implements:
 
-1. Buy monthly ATM PE.
-2. Sell weekly ITM PE at ATM + 2 strikes.
-3. Buy weekly ATM CE at ATM strike.
-4. Sell monthly ITM CE at ATM − 2 strikes.
-
-Entry is 09:30 IST on the configured cycle-entry day; exit is 15:15 IST on the following weekly-expiry day, with previous-trading-day holiday rolls. Slippage and fixed cycle costs are modeled explicitly.
+- ATM strike selection from the 09:30 spot observation;
+- monthly ATM PE buy;
+- weekly ATM+2-strike PE sell;
+- weekly ATM CE buy;
+- monthly ATM−2-strike CE sell;
+- Tuesday/Thursday weekly and last-Tuesday/last-Thursday monthly expiry math;
+- previous-trading-day holiday roll;
+- first quote at/after 09:30 for entry and last quote at/before 15:15 for exit;
+- 0.5% adverse slippage per leg at entry and exit;
+- ₹40 per leg, ₹160 per cycle fixed cost;
+- ₹1,50,000 ROC denominator;
+- trade-level and leg-level outputs plus skipped-cycle diagnostics.
 
 ## Important implementation note
 
-The requested 50-point NIFTY and 100-point SENSEX strike intervals are treated as **research assumptions**. Exchange contract specifications can change, so the production dataset must be checked against the exchange contract master before live use.
+The requested 50-point NIFTY and 100-point SENSEX strike intervals are treated as **research assumptions**. Exchange contract specifications can change, so a production dataset must be reconciled with the exchange contract master and date-specific lot sizes.
 
-See the phase branch 'phase-1-reverse-calendar-backtest' for the implementation.
+Phase 2 is the data-audit gate. Historical results are intentionally deferred until point-in-time option/spot data and calendar validation are available.
