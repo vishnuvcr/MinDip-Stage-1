@@ -1,0 +1,31 @@
+{
+  "strategy": "current_uploaded_screenshot",
+  "sample_start": "2025-10-01",
+  "sample_end": "2026-05-27",
+  "files": {
+    "NIFTY_current_cycles.csv": {
+      "bytes": 3357,
+      "sha256": "04af330d0d1a56710a75c73807de66e59f0f98a6238b9e0c99ed29459373168f"
+    },
+    "NIFTY_current_legs.csv": {
+      "bytes": 57416,
+      "sha256": "fccbc55b752f3dd16e7e6eadcd1dcce3f0035040ad28e54e43ab508d04e8312e"
+    },
+    "SENSEX_current_cycles.csv": {
+      "bytes": 2924,
+      "sha256": "2cf42b7db51f2ae96c85fd2f9b1f97099bc22e8a4cc7fe27a5750fceb3feb9bd"
+    },
+    "SENSEX_current_legs.csv": {
+      "bytes": 51888,
+      "sha256": "af4a0652789a6c10df85696e9e1d07241973522d86ba147a8e29de4dc93818b4"
+    },
+    "cross_index_metrics.csv": {
+      "bytes": 614,
+      "sha256": "b8628f017eb9a58fdd70159a37f4f86cdfec39c8050abf79173cd79b943cc7af"
+    },
+    "screenshot_strike_demo.json": {
+      "bytes": 155,
+      "sha256": "9552e703ad27e2b42d2de0316352c7ec636c5ae12df71092b434231f12ae1f79"
+    }
+  }
+}
