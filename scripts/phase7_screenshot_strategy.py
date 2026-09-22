@@ -204,7 +204,7 @@ def main():
     con=duckdb.connect(); con.execute("SET TimeZone='Asia/Kolkata'"); con.execute("PRAGMA threads=4")
     allm=[]
     for t in ("NIFTY","SENSEX"):
-        s=spot_query(con,t,a.start,a.end); s.to_csv(out/f"{t}_spot.csv",index=False)
+        s=spot_query(con,t,a.start,a.end)
         cy=targets(s,t,a.start,a.end); cy.to_csv(out/f"{t}_target_cycles.csv",index=False)
         for k in (1,2):
             lg=extract(con,cy,t,k); lg.to_csv(out/f"{t}_variant{k}_legs.csv",index=False)
