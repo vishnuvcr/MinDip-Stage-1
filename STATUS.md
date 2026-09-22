@@ -27,4 +27,4 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 4 robustness stress is complete. The workflow confirmed the locked result is negative even under zero-friction counterfactuals. Phase 5 is the next gate.
+Phase 5 diagnostics are complete. Chronology stability and the untouched final block remain negative; DSR/PBO are not estimable for a single prespecified strategy. Phase 6 is the final manuscript gate.
