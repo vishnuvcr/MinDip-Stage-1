@@ -41,3 +41,11 @@ Primary sample window:
 - end: 2026-09-22
 
 This window is chosen so the locked Tuesday NIFTY and Thursday SENSEX expiry conventions apply to the whole primary sample.
+
+## Calendar and coverage correction
+
+The first Phase 2 extractor used observed spot dates as a trading calendar. That was corrected after audit because missing spot observations must not be interpreted as exchange holidays. The locked calendar now uses the explicit holiday file at data/calendar/exchange_holidays.csv, while missing spot observations are separately logged as data gaps.
+
+The comparable Phase 2 sample ends on 2026-05-27, the common spot-data endpoint used by the current pinned reference files. Later SENSEX observations are not used to create an unequal cross-index window.
+
+The 2026 SENSEX holiday rows in the current calendar are mirrored from the corresponding NSE market holiday schedule and are marked as provisional pending direct BSE confirmation; this remains a Phase 2 data-audit item rather than a hidden assumption.
