@@ -50,3 +50,9 @@
 - After the calendar correction, the locked sample produced 33 NIFTY and 28 SENSEX complete baskets rather than the initial 29/29.
 - The corrected primary result is retained; the superseded result must not be used in later analysis.
 - The superseded cache was overwritten by the corrected workflow output and the provenance manifest was refreshed.
+
+
+### E-0009 — Research-status files lagged completed Phase 3/4 branches
+- Observed: The Phase 4 branch inherited stale status text from before the corrected Phase 3/4 runs.
+- Fix: synchronized README, STATUS, RESEARCH_PLAN, and CONVERSATION_LOG with the completed empirical phases before starting Phase 5.
+- Prevention: phase branches must refresh the status ledger immediately after each workflow gate.
