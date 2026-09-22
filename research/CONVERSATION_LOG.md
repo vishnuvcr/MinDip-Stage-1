@@ -21,3 +21,8 @@ Reviewed prior project data-acquisition work, searched current public data sourc
 ## 2026-09-22 — Phase 2 extraction outcome
 
 The end-to-end remote extractor reached the data and completed the calculation. Provisional output showed 34 NIFTY target cycles and 38 SENSEX target cycles, with 29 completed four-leg cycles for each. The first automated cache push failed because the branch changed during the long-running job; the workflow was made rebase-safe before retry.
+
+
+## 2026-09-22 — Critical calendar audit correction
+
+The first end-to-end extraction produced a material methodology bug: absent spot dates were treated as exchange holidays. This caused incorrect monthly expiry dates. The error was logged as E-0007, an explicit holiday calendar was added, the common sample window was narrowed to 2026-05-27, and the extraction is being rerun before Phase 3.
