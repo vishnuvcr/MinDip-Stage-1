@@ -80,3 +80,8 @@ The Phase 6 numerical conclusion applies to the originally written ATM ±2-strik
 ## Final Phase 6 conclusion
 
 The complete research manuscript is in research/MIN_DIP_RESEARCH_MANUSCRIPT.md and the final conclusion is in docs/FINAL_CONCLUSION.md. The locked specification did not pass the historical promotion gate: both NIFTY and SENSEX were negative under the primary model, negative under the zero-friction counterfactual, and predominantly negative under chronology robustness diagnostics. No alternative parameter set is promoted from the observed sample.
+
+
+## Phase 8 — current screenshot strategy
+
+The latest screenshots are now the authoritative strategy specification. The current basket is: **SELL monthly ATM PE; BUY monthly ATM−2-strike CE; BUY weekly ATM+2-strike PE; SELL weekly ATM CE**. For the visible NIFTY example at 23,329 with 50-point strikes this maps to 23,350 PE sold, 23,250 CE bought, 23,450 PE bought, and 23,350 CE sold. The previous Phase 6/7 results are not applicable to this current strategy.
