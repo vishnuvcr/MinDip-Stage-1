@@ -99,3 +99,7 @@ The latest screenshots show the broker explicitly using separate target-day futu
 ## Phase 9 progress
 
 The broker-style model has now been independently calibrated with Black-76 using the separate weekly/monthly futures shown in the screenshots. It reproduces ₹12,100 intrinsic to within ₹3, portfolio delta (-0.04094 vs displayed -0.041), portfolio vega (-0.6685 vs -0.67), and the displayed 96% POP approximately (95.38%). The remaining uncertainty is the exact broker theta/decay convention and the exact payoff/max-profit/max-loss curve. Execution-cost stress is now being run using current Paytm brokerage as a separate operational scenario; direct historical bid/ask data and date-specific statutory charges remain outstanding.
+
+
+### Phase 9 execution result
+The broker model calibration is now complete and the close-based execution stress is complete. Using current Paytm Money's stated ₹10 per unique executed F&O order as a brokerage-only operational reference, eight entry/exit orders imply ₹80 brokerage per basket before other statutory/exchange charges. Break-even premium slippage is approximately **0.315% NIFTY / 0.370% SENSEX** in that brokerage-only scenario. Under the locked ₹160 research-cost proxy it is **0.2567% / 0.2971%**. Historical bid/ask and all-in charge reconstruction remains the final Phase 9 evidence gap.
