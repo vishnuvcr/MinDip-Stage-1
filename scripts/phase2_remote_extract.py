@@ -166,9 +166,8 @@ def build_cycles(
         if weekly is None or monthly is None or weekly > pd.Timestamp(end):
             continue
 
-        rows = spot[
-            spot["trading_day"].eq(entry.strftime("%Y-%m-%d"))
-        ].sort_values("timestamp")
+        spot_days = pd.to_datetime(spot["trading_day"]).dt.normalize()
+        rows = spot[spot_days.eq(pd.Timestamp(entry).normalize())].sort_values("timestamp")
         rows = rows[rows["timestamp"].dt.time >= pd.Timestamp("09:30:00").time()]
         if rows.empty:
             continue
@@ -240,8 +239,8 @@ def option_extract(
     sql = f"""
         SELECT
             timestamp,
-            CAST(trading_day AS DATE) AS trading_day,
-            symbol,
+            CAST(date AS DATE) AS trading_day,
+            underlying AS symbol,
             CAST(expiry AS DATE) AS expiry,
             strike,
             option_type,
@@ -250,12 +249,12 @@ def option_extract(
             low,
             close,
             volume,
-            open_interest,
+            oi AS open_interest,
             source,
             granularity
         FROM {relation}
-        WHERE symbol = {sql_quote(ticker)}
-          AND CAST(trading_day AS DATE) IN ({date_list})
+        WHERE underlying = {sql_quote(ticker)}
+          AND CAST(date AS DATE) IN ({date_list})
           AND CAST(expiry AS DATE) IN ({expiry_list})
           AND (
               (EXTRACT(HOUR FROM timestamp) = 9 AND EXTRACT(MINUTE FROM timestamp) BETWEEN 30 AND 35)
