@@ -10,7 +10,7 @@ As of: 2026-09-22
 | 2 Data audit | Complete with caveat | Corrected holiday calendar, provenance, missing-data audit, reduced cache |
 | 3 Historical backtest | Complete | 33 NIFTY and 28 SENSEX complete cycles; trade-level statistics and bootstrap diagnostics cached |
 | 4 Robustness | Complete | Cost/slippage grid, break-even friction, chronology blocks, volatility context; bid/ask limitation retained |
-| 5 CPCV/DSR/PBO | Next | Single prespecified strategy: CPCV stability + DSR diagnostic; PBO only if multiple candidate trials are genuinely available |
+| 5 CPCV/DSR/PBO | Complete | CPCV stability, untouched holdout, DSR diagnostic, PBO identifiability, permutation test |
 | 6 Manuscript | Complete | Full manuscript, figures, appendices, final conclusion, reproducibility map |
 
 ## Software verification status
@@ -19,7 +19,7 @@ Deterministic tests are committed in tests/test_multileg_options_backtest.py. Th
 
 ## Empirical status
 
-No production historical result is reported yet. The repository contains no licensed/validated market dataset. Synthetic test outcomes are software verification only.
+Historical research results are committed for the corrected public-source sample. No live/production performance claim is made; direct bid/ask and exact historical broker-ledger reconstruction remain deployment prerequisites.
 
 ## Known execution limitation
 
