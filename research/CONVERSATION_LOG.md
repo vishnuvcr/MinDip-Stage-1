@@ -11,3 +11,8 @@ Research actions: checked current official/primary exchange expiry references; r
 Execution note: local GitHub clone was blocked by container DNS; this was logged as E-0003. No empirical profitability result was inferred from synthetic tests.
 
 Note: this file stores the user-visible request and research actions, not private hidden chain-of-thought.
+
+
+## 2026-09-22 — Phase 2 data acquisition started
+
+Reviewed prior project data-acquisition work, searched current public data sources, selected a pinned NIFTY/SENSEX intraday option source and a spot source, designed a reduced remote extract, and created the Phase 2 data-audit branch/workflow. A provider-schema mismatch was caught and fixed before empirical execution (E-0004).
