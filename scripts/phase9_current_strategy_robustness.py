@@ -86,7 +86,7 @@ def main() -> None:
 
         last_block = t.index // max(1, len(t)//6)
         last_id = int(last_block.max())
-        hold = t[last_block.eq(last_id)]
+        hold = t[last_block == last_id]
         hm = metrics(hold["net_pnl"])
         hm.update({"ticker":ticker,"holdout_block":last_id,"holdout_start":str(hold["entry_date"].min().date()),
                    "holdout_end":str(hold["entry_date"].max().date())})
