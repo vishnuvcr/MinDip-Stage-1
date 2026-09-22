@@ -31,3 +31,9 @@
 - Cause: the source tree contains OHLCV index rows without that field in the queried file.
 - Fix: removed `open_interest` from the spot query and pinned both source families to immutable revisions.
 - Prevention: treat each file partition's schema independently; do not infer option-chain columns from spot schema.
+
+### E-0006 — Phase 2 extraction succeeded but cache commit lost a race
+- Observed: the full remote extraction completed and produced a 364 KB reduced cache with 29 complete cycles for each index, but the GitHub Actions push was rejected because the branch changed while the job was running.
+- Cause: the workflow committed data from an older checkout while later documentation commits had advanced the branch.
+- Fix: changed the workflow to fetch, rebase onto the current remote branch, and then push the cache commit.
+- Prevention: never push generated research artifacts from a long-running workflow without rebasing against the latest branch tip.
