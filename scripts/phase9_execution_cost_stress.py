@@ -88,17 +88,29 @@ def stress_table(base: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def break_even_slippage(base: pd.DataFrame, fixed_cost: float) -> pd.DataFrame:
+def break_even_slippage_from_surface(stress: pd.DataFrame, fixed_cost_name: str) -> pd.DataFrame:
     rows = []
-    for ticker, g in base.groupby("ticker"):
-        raw = float(g["raw_gross_pnl"].sum())
-        coeff = float(g["slippage_pnl_per_1pct"].sum())
-        s = (raw - fixed_cost) / (-coeff) if coeff < 0 else np.nan
+    for ticker, g in stress[stress["fixed_cost_name"].eq(fixed_cost_name)].groupby("ticker"):
+        g = g.sort_values("slippage_pct")
+        # Find adjacent grid points around zero. Interpolate the actual stress
+        # surface rather than relying on a separately stored slope convention.
+        found = None
+        for i in range(len(g) - 1):
+            a = g.iloc[i]
+            b = g.iloc[i + 1]
+            if float(a["net_pnl"]) == 0:
+                found = float(a["slippage_pct"]) / 100.0
+                break
+            if float(a["net_pnl"]) > 0 and float(b["net_pnl"]) < 0:
+                x1, y1 = float(a["slippage_pct"]) / 100.0, float(a["net_pnl"])
+                x2, y2 = float(b["slippage_pct"]) / 100.0, float(b["net_pnl"])
+                found = x1 + (0.0 - y1) * (x2 - x1) / (y2 - y1)
+                break
         rows.append({
             "ticker": ticker,
-            "fixed_cost": fixed_cost,
-            "break_even_slippage_pct": float(s * 100.0) if np.isfinite(s) else np.nan,
-            "break_even_slippage_bps": float(s * 10_000.0) if np.isfinite(s) else np.nan,
+            "fixed_cost_name": fixed_cost_name,
+            "break_even_slippage_pct": float(found * 100.0) if found is not None else np.nan,
+            "break_even_slippage_bps": float(found * 10_000.0) if found is not None else np.nan,
         })
     return pd.DataFrame(rows)
 
@@ -130,9 +142,9 @@ def main() -> None:
 
     be = pd.concat(
         [
-            break_even_slippage(base, PAYTM_BROKERAGE_ONLY_PER_CYCLE),
-            break_even_slippage(base, 160.0),
-            break_even_slippage(base, 320.0),
+            break_even_slippage_from_surface(stress, "paytm_brokerage_only_current"),
+            break_even_slippage_from_surface(stress, "locked_research_cost"),
+            break_even_slippage_from_surface(stress, "two_times_locked_cost"),
         ],
         ignore_index=True,
     )
