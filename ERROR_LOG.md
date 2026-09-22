@@ -68,3 +68,10 @@
 - Cause: GitHub Actions expressions were over-escaped when embedded in the repository-management command.
 - Fix: rewrote the workflow so the GitHub expression is emitted literally as ${{ ... }}.
 - Prevention: inspect rendered workflow YAML before running a data-extraction phase.
+
+
+### E-0012 — Phase 6 conclusion was over-applied to a different strategy specification
+- Observation: the screenshot's worked example uses 25,000 monthly PE, 25,200 weekly PE, 25,050 weekly CE and 25,000 monthly CE at spot 25,049.55. The Phase 6 backtest used a different ATM/offset convention.
+- Impact: the Phase 6 numerical conclusion cannot be treated as a conclusion about the screenshot strategy.
+- Fix: created Phase 7 with a screenshot-derived strike mapping and fresh historical extraction.
+- Prevention: keep screenshot-derived specifications separate from prose-derived parameterizations and reconcile them before empirical conclusions.
