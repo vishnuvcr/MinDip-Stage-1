@@ -61,3 +61,8 @@ The first end-to-end remote extraction completed successfully and produced a sma
 ## Phase 2 corrected result
 
 The corrected common-window extraction (2025-10-01 to 2026-05-27) completed successfully in GitHub Actions. It produced 34 target cycles for each index; 33 NIFTY cycles and 28 SENSEX cycles had all four executable legs. The locked 0.5% slippage plus ₹160 cycle-cost model produced provisional net ROC of -29.88% for NIFTY and -22.28% for SENSEX over those executed samples. These are Phase 2 historical observations, not a promoted strategy recommendation; robustness and validation remain in later phases.
+
+
+## Phase 3–4 completed findings
+
+The corrected 2025-10-01 to 2026-05-27 locked backtest produced 33 complete NIFTY cycles and 28 complete SENSEX cycles. Under the locked 0.5% adverse slippage and ₹160/cycle cost, net P&L was approximately ₹-44,823 and ₹-33,426 respectively. Phase 4 showed that both samples remained negative even at 0% slippage and ₹0 cost; the break-even slippage was negative for both indices. Robustness outputs are in `data/cache/phase4/` and `docs/PHASE4_RESULTS.md`. Phase 5 is now the next gate.
