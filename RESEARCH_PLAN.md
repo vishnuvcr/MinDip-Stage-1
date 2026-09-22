@@ -85,7 +85,7 @@ Gate achieved:
 - separate current-strategy metrics and friction decomposition produced.
 
 ### Phase 9 — Current-strategy robustness
-Status: In progress — broker model gate passed, execution gate underway
+Status: In progress — broker model and close-based cost stress complete; execution-quality validation outstanding
 Completed in this phase:
 - separate weekly/monthly futures recognized;
 - Black-76 leg IV calibration;
