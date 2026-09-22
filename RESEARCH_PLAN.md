@@ -75,13 +75,23 @@ Status: Complete for original written-rule experiment
 Status: Superseded by Phase 8
 
 ### Phase 8 — Current uploaded screenshot strategy
-Status: In progress
+Status: Complete
+Gate achieved:
+- latest editor/payoff screenshots used as authoritative;
+- exact four legs locked: SELL monthly ATM PE; BUY monthly ATM-2 CE; BUY weekly ATM+2 PE; SELL weekly ATM CE;
+- nearest strike used as ATM;
+- historical sample rerun from the existing point-in-time contract cache;
+- exact mapping independently validated;
+- separate current-strategy metrics and friction decomposition produced.
+
+### Phase 9 — Current-strategy robustness
+Status: Next
 Gate:
-- use latest uploaded editor/payoff screenshots as authoritative;
-- lock exact four legs: SELL monthly ATM PE; BUY monthly ATM-2 CE; BUY weekly ATM+2 PE; SELL weekly ATM CE;
-- use nearest strike as ATM;
-- rerun historical sample without using earlier results to select parameters;
-- produce separate metrics and conclusion for this exact strategy.
+- direct bid/ask or spread-aware execution;
+- historical broker/statutory fee reconstruction;
+- slippage stress beyond the current grid;
+- chronology/CPCV and untouched holdout using the corrected strategy;
+- separate current-strategy manuscript addendum.
 Gate:
 - methods, results, inference, discussion, limitations, conclusion;
 - figures/tables/appendices;
