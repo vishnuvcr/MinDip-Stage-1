@@ -18,3 +18,10 @@
 - Research implication: no claim is made that tests were locally executed in this session.
 - Fix: commit deterministic tests and a manual/push GitHub Actions workflow so CI can perform the authoritative software check.
 - Prevention: treat external-network execution as optional; keep reproducible CI in the repository.
+
+
+### E-0004 — Phase 2 schema review found provider-field mismatch before CI
+- Observed: the first Phase 2 extractor draft assumed `symbol`, `trading_day`, and `open_interest` fields in the primary rissin options dataset.
+- Correct schema: `underlying`, `date`, and `oi`.
+- Fix: patched the option query before relying on any empirical output.
+- Prevention: pin and audit provider schemas before extracting historical results.
