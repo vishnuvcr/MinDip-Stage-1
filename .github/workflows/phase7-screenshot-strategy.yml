@@ -53,4 +53,4 @@ jobs:
           git commit -m "phase-7: cache screenshot-exact strategy retest"
           git fetch origin "$GITHUB_REF_NAME"
           git rebase "origin/$GITHUB_REF_NAME"
-          git push
+          git push --force-with-lease
