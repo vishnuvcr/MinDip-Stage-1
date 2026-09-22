@@ -1,0 +1,65 @@
+name: Phase 8 — Current Uploaded Screenshot Strategy
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: Sample start
+        required: false
+        default: "2025-10-01"
+        type: string
+      end:
+        description: Sample end
+        required: false
+        default: "2026-05-27"
+        type: string
+      ticker:
+        description: Index
+        required: false
+        default: NIFTY
+        type: choice
+        options:
+          - NIFTY
+          - SENSEX
+  push:
+    paths:
+      - "scripts/phase8_current_screenshot_strategy.py"
+      - "docs/PHASE8_CURRENT_SCREENSHOT_STRATEGY.md"
+      - ".github/workflows/phase8-current-screenshot-strategy.yml"
+      - "data/calendar/exchange_holidays.csv"
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install pandas duckdb numpy
+      - name: Run current uploaded screenshot strategy
+        env:
+          START: \${{ inputs.start || '2025-10-01' }}
+          END: \${{ inputs.end || '2026-05-27' }}
+          TICKER: \${{ inputs.ticker || 'NIFTY' }}
+        run: |
+          python scripts/phase8_current_screenshot_strategy.py \
+            --start "$START" \
+            --end "$END" \
+            --output "data/cache/phase8/$TICKER"
+      - name: Verify exact screenshot mapping
+        run: cat "data/cache/phase8/$TICKER/screenshot_strike_demo.json"
+      - name: Show results
+        run: cat "data/cache/phase8/$TICKER/cross_index_metrics.csv"
+      - name: Commit reduced Phase 8 results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "data/cache/phase8/$TICKER"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "phase-8: cache current uploaded strategy results"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push --force-with-lease
