@@ -56,3 +56,9 @@
 - Observed: The Phase 4 branch inherited stale status text from before the corrected Phase 3/4 runs.
 - Fix: synchronized README, STATUS, RESEARCH_PLAN, and CONVERSATION_LOG with the completed empirical phases before starting Phase 5.
 - Prevention: phase branches must refresh the status ledger immediately after each workflow gate.
+
+
+### E-0010 — DSR/PBO identifiability must not be manufactured
+- Observation: the research has only one prespecified strategy, so standard multiple-trial DSR and PBO cannot be validly estimated.
+- Fix: report them as not estimable and provide the observed Sharpe/skew/kurtosis plus CPCV and permutation diagnostics instead.
+- Prevention: do not create artificial candidate trials from cost/slippage stress cells.
