@@ -26,3 +26,8 @@ The end-to-end remote extractor reached the data and completed the calculation. 
 ## 2026-09-22 — Critical calendar audit correction
 
 The first end-to-end extraction produced a material methodology bug: absent spot dates were treated as exchange holidays. This caused incorrect monthly expiry dates. The error was logged as E-0007, an explicit holiday calendar was added, the common sample window was narrowed to 2026-05-27, and the extraction is being rerun before Phase 3.
+
+
+## 2026-09-22 — Phase 2 corrected result
+
+The corrected GitHub Actions extraction completed successfully using explicit holidays and the common 2025-10-01 to 2026-05-27 window. Final Phase 2 audit counts: 34 target cycles for each index, 33 complete NIFTY baskets and 28 complete SENSEX baskets. Net ROC under the locked cost/slippage assumptions was approximately -29.88% and -22.28% respectively. The initial calendar-derived result was superseded and is not used going forward.
