@@ -11,7 +11,7 @@ As of: 2026-09-22
 | 3 Historical backtest | Complete | 33 NIFTY and 28 SENSEX complete cycles; trade-level statistics and bootstrap diagnostics cached |
 | 4 Robustness | Complete | Cost/slippage grid, break-even friction, chronology blocks, volatility context; bid/ask limitation retained |
 | 5 CPCV/DSR/PBO | Next | Single prespecified strategy: CPCV stability + DSR diagnostic; PBO only if multiple candidate trials are genuinely available |
-| 6 Manuscript | Not started | Final structured research report |
+| 6 Manuscript | Complete | Full manuscript, figures, appendices, final conclusion, reproducibility map |
 
 ## Software verification status
 
@@ -27,4 +27,4 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 5 diagnostics are complete. Chronology stability and the untouched final block remain negative; DSR/PBO are not estimable for a single prespecified strategy. Phase 6 is the final manuscript gate.
+Phase 6 manuscript gate is complete. The final conclusion is that the locked specification did not pass the historical promotion gate. A new strategy candidate must start a separate research experiment.
