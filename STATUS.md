@@ -27,7 +27,7 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 6 manuscript gate is complete. The final conclusion is that the locked specification did not pass the historical promotion gate. A new strategy candidate must start a separate research experiment.
+Phase 9 broker-model reconciliation and close-based execution stress are complete for the current screenshot strategy. The remaining evidence gap is historical bid/ask/spread and exact date-specific all-in charges. The Phase 6 written-rule conclusion is not applicable to the current screenshot strategy.
 
 | 7 Screenshot strategy reconciliation | Superseded | Earlier screenshot interpretation superseded by latest uploaded screenshots |
 
