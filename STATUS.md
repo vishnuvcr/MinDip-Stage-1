@@ -29,4 +29,6 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 Phase 6 manuscript gate is complete. The final conclusion is that the locked specification did not pass the historical promotion gate. A new strategy candidate must start a separate research experiment.
 
-| 7 Screenshot strategy reconciliation | In progress | Exact visual leg mapping, lower/upper ATM convention, Leg 4 1/2-strike variants; fresh historical test running |
+| 7 Screenshot strategy reconciliation | Superseded | Earlier screenshot interpretation superseded by latest uploaded screenshots |
+
+| 8 Current uploaded screenshot strategy | In progress | Exact four-leg basket from latest screenshots locked before fresh backtest |
