@@ -113,3 +113,9 @@
 - Cause: break-even was calculated from an intermediate coefficient convention rather than interpolated directly from the tested stress surface.
 - Fix: break-even is now derived by interpolation on the actual computed stress surface; current thresholds are 0.3150%/0.3701% under ₹80 brokerage-only and 0.2567%/0.2971% under ₹160.
 - Prevention: derive threshold metrics from the canonical output surface used for the reported stress results.
+
+
+### E-0019 — Phase 9 robustness holdout selector used Index.eq()
+- Observed: the CPCV/bootstrap calculation was reached, but the untouched-holdout selection failed because a NumPy Index has no `.eq()` method.
+- Fix: replaced the holdout mask with a direct boolean comparison.
+- Prevention: keep holdout masks as explicit NumPy/pandas boolean arrays and run the workflow before accepting the phase gate.
