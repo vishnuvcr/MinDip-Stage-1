@@ -66,3 +66,8 @@ The corrected common-window extraction (2025-10-01 to 2026-05-27) completed succ
 ## Phase 3–4 completed findings
 
 The corrected 2025-10-01 to 2026-05-27 locked backtest produced 33 complete NIFTY cycles and 28 complete SENSEX cycles. Under the locked 0.5% adverse slippage and ₹160/cycle cost, net P&L was approximately ₹-44,823 and ₹-33,426 respectively. Phase 4 showed that both samples remained negative even at 0% slippage and ₹0 cost; the break-even slippage was negative for both indices. Robustness outputs are in `data/cache/phase4/` and `docs/PHASE4_RESULTS.md`. Phase 5 is now the next gate.
+
+
+## Phase 5 result
+
+CPCV over 15 two-block test combinations remained predominantly negative: positive test-block net P&L occurred in 6.7% of combinations for NIFTY and 20.0% for SENSEX. The untouched final chronology block was negative for both. Multiple-trial DSR and PBO are correctly marked not estimable because the research contains one prespecified strategy rather than a post-hoc candidate family. Sign-flip permutation p-values were 0.02077 (NIFTY) and 0.04251 (SENSEX); these are diagnostics, not a strategy-selection device. Phase 6 is the final manuscript gate.
