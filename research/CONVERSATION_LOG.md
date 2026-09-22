@@ -83,3 +83,8 @@ The broker-model calibration and close-based execution-cost stress both complete
 ## 2026-09-23 — Phase 9 current-strategy robustness completed
 
 The corrected current four-leg strategy was subjected to bootstrap statistics, six-block CPCV, and an untouched final chronology block. At 0.5% slippage plus ₹160/cycle, CPCV positive test combinations occurred in 40.0% of NIFTY and 46.7% of SENSEX combinations, with negative median test means. The untouched final block was negative for both. Bootstrap intervals for mean P&L included zero. Combined with the execution thresholds and broker-model reconciliation, the current evidence is execution-sensitive and statistically inconclusive rather than robustly validated.
+
+
+## 2026-09-23 — Phase 9 final disposition
+
+Phase 9 completed broker-model calibration, Paytm brokerage-only and locked-cost stress, bootstrap/CPCV/untouched-holdout diagnostics, and the final execution-sensitivity analysis. The current uploaded strategy is execution-sensitive and statistically inconclusive. It is not promoted to production because historical bid/ask/market-depth and exact date-specific all-in fees are not available in the current OHLC cache.
