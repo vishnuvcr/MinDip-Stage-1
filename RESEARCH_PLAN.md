@@ -42,7 +42,7 @@ Gate:
 - corporate-action/news/calendar audit where applicable.
 
 ### Phase 3 — Historical backtest
-Status: Not started
+Status: Complete
 Gate:
 - NIFTY and SENSEX trade logs;
 - equity curves;
@@ -51,7 +51,7 @@ Gate:
 - missing-data and skipped-cycle report.
 
 ### Phase 4 — Robustness & cost stress
-Status: Not started
+Status: Complete
 Gate:
 - slippage stress;
 - spread/liquidity stress;
@@ -61,7 +61,7 @@ Gate:
 - parameter sensitivity that does not change the locked primary result.
 
 ### Phase 5 — CPCV / DSR / PBO
-Status: Not started
+Status: Next
 Gate:
 - chronology-safe cross-validation;
 - multiple-testing correction;
