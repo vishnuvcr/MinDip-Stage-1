@@ -50,3 +50,8 @@
 - After the calendar correction, the locked sample produced 33 NIFTY and 28 SENSEX complete baskets rather than the initial 29/29.
 - The corrected primary result is retained; the superseded result must not be used in later analysis.
 - The superseded cache was overwritten by the corrected workflow output and the provenance manifest was refreshed.
+
+### E-0009 — Final validation records formal DSR/PBO as not estimable
+- The study contains one locked strategy rather than a set of independently selected candidate strategies.
+- Formal multi-trial DSR and PBO are therefore not identified by the design.
+- Fix: report a single-trial PSR diagnostic and CPCV-style path stability instead of fabricating multi-trial estimates.
