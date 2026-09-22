@@ -1,19 +1,24 @@
-# Phase 5 — CPCV / DSR / PBO Validation
+# Phase 5 Results
 
-## Validation design
+## CPCV-style stability
 
-The strategy specification is frozen before validation. We use a 6-block chronology and enumerate all 2-block test-set combinations (15 paths per index) as a CPCV-style stability diagnostic.
+Using six chronological blocks and all 2-of-6 test-block combinations:
 
-Because there is no model selection inside the locked rule, this is not a full predictive-model CPCV implementation. It answers a simpler question: does the same rule remain economically positive across many chronological recombinations?
+| Metric | NIFTY | SENSEX |
+|---|---:|---:|
+| Completed trades | 33 | 28 |
+| Test paths | 15 | 15 |
+| Positive P&L paths | 6.7% | 20.0% |
+| Median test Sharpe | -0.429 | -0.583 |
+| Mean test Sharpe | -0.425 | -0.438 |
 
-## DSR / PSR
+## Single-trial PSR diagnostic
 
-A formal Deflated Sharpe Ratio requires a meaningful count of independent strategy trials. The primary study has one frozen strategy specification. Rather than fabricate a multiple-testing penalty, the repository reports a single-trial Probabilistic Sharpe Ratio diagnostic and explicitly records formal multi-trial DSR as not identifiable.
+| Index | Sharpe | PSR P(Sharpe > 0) |
+|---|---:|---:|
+| NIFTY | -0.425 | 0.0074 |
+| SENSEX | -0.400 | 0.0277 |
 
-## PBO
+A formal multi-trial Deflated Sharpe Ratio is not identified by the study design because one strategy specification was locked before testing. Probability of Backtest Overfitting is likewise not estimable for one frozen strategy. The repository therefore reports these design limitations explicitly rather than fabricating multi-trial statistics.
 
-Probability of Backtest Overfitting is likewise not identifiable for one frozen strategy. The cost/slippage grid is a robustness sensitivity analysis, not a set of independently selected candidate strategies, so it is not used to manufacture a PBO estimate.
-
-## Promotion rule
-
-A strategy remains unsupported when the negative primary expectancy is accompanied by predominantly negative CPCV test paths or a non-positive PSR diagnostic. A positive result in only a small subset of paths is preserved as a descriptive finding rather than a promotion signal.
+The CPCV-style paths provide the practical stability result: positive P&L appears in only a small minority of chronological test combinations.
