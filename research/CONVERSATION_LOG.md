@@ -73,3 +73,8 @@ The Summary also shows POP 96%, max profit ₹5,961, max loss ₹138, reward/ris
 ## 2026-09-23 — Phase 9 broker-model gate
 
 Black-76 calibration using the screenshot's weekly and monthly futures reproduced the displayed intrinsic value, delta, vega and POP closely. The CI run failed only during a binary workbook rebase after the model calculation and verification had already succeeded; the generated CSV/JSON cache remained committed. The workflow was made binary-safe, and the execution-cost stress workflow was added using current Paytm brokerage as a separately labeled scenario.
+
+
+## 2026-09-23 — Phase 9 execution stress completed
+
+The broker-model calibration and close-based execution-cost stress both completed. Black-76 reproduced the screenshot's intrinsic value (₹12,103 vs ₹12,100), delta (-0.04094 vs -0.041), vega (-0.6685 vs -0.67), and POP (95.38% vs 96%). Execution-cost stress shows break-even slippage of 0.3150% NIFTY and 0.3701% SENSEX under an illustrative ₹80 current-brokerage-only cost, versus 0.2567% and 0.2971% under the locked ₹160 research cost. The remaining evidence gap is historical bid/ask/spread and date-specific all-in charges.
