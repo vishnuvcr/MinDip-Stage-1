@@ -27,7 +27,7 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 9 broker-model reconciliation and close-based execution stress are complete for the current screenshot strategy. The remaining evidence gap is historical bid/ask/spread and exact date-specific all-in charges. The Phase 6 written-rule conclusion is not applicable to the current screenshot strategy.
+Phase 9 is complete for the current uploaded strategy. Final disposition: **execution-sensitive and statistically inconclusive**. Broker-model reconciliation, close-based cost stress, bootstrap/CPCV and untouched holdout are complete. Historical bid/ask/spread and exact all-in charges remain unavailable in the current public OHLC cache, so production-level validation is not claimed.
 
 | 7 Screenshot strategy reconciliation | Superseded | Earlier screenshot interpretation superseded by latest uploaded screenshots |
 
@@ -35,7 +35,7 @@ Phase 9 broker-model reconciliation and close-based execution stress are complet
 
 - New screenshot evidence confirms broker-model valuation uses separate target futures for weekly and monthly legs; this is now a required Phase 9 validation item.
 
-| 9 Broker model & execution realism | In progress | Black-76 calibration reproduces screenshot intrinsic/delta/vega/POP closely; execution-cost stress added; bid/ask validation remains |
+| 9 Broker model & execution realism | Complete with execution-data limitation | Broker-model calibration, execution-cost stress, CPCV, bootstrap and untouched holdout completed; historical bid/ask/all-in fees unavailable in current public cache |
 
 - Phase 9 model reconciliation: **gate passed** — screenshot intrinsic/delta/vega/POP closely reproduced with separate expiry futures.
 - Phase 9 execution stress: **complete for close-based sensitivity** — current brokerage-only and locked-cost slippage thresholds calculated.
