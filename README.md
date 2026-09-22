@@ -61,3 +61,19 @@ The first end-to-end remote extraction completed successfully and produced a sma
 ## Phase 2 corrected result
 
 The corrected common-window extraction (2025-10-01 to 2026-05-27) completed successfully in GitHub Actions. It produced 34 target cycles for each index; 33 NIFTY cycles and 28 SENSEX cycles had all four executable legs. The locked 0.5% slippage plus ₹160 cycle-cost model produced provisional net ROC of -29.88% for NIFTY and -22.28% for SENSEX over those executed samples. These are Phase 2 historical observations, not a promoted strategy recommendation; robustness and validation remain in later phases.
+
+## Final research conclusion
+
+The corrected locked backtest is complete through Phase 6. In the 2025-10-01 to 2026-05-27 common window, 33 NIFTY and 28 SENSEX baskets were fully executable. Primary net ROC was -29.88% for NIFTY and -22.28% for SENSEX. The sign remains negative at zero slippage and zero fixed cost, so the observed failure is not attributable solely to the assumed transaction-friction model. CPCV-style stability is also predominantly negative.
+
+The complete manuscript is at docs/FINAL_MANUSCRIPT.md, with figures in docs/figures/ and all phase outputs under data/cache/phase2 through data/cache/phase5.
+
+## Research map
+
+- docs/LITERATURE_REVIEW.md — literature and methodological context
+- docs/FINAL_MANUSCRIPT.md — complete final manuscript
+- docs/PHASE2_DATA_AUDIT.md — source/calendar/data audit
+- docs/PHASE3_RESULTS.md — historical performance methodology
+- docs/PHASE4_RESULTS.md — robustness and cost stress
+- docs/PHASE5_RESULTS.md — CPCV/PSR/PBO validation
+- docs/figures/ — equity, stress, leg and CPCV figures
