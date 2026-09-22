@@ -32,3 +32,5 @@ Phase 6 manuscript gate is complete. The final conclusion is that the locked spe
 | 7 Screenshot strategy reconciliation | Superseded | Earlier screenshot interpretation superseded by latest uploaded screenshots |
 
 | 8 Current uploaded screenshot strategy | Complete | Exact latest screenshot basket backtested; NIFTY -7.34% ROC, SENSEX -4.15% ROC under 0.5% slippage + ₹160/cycle |
+
+- New screenshot evidence confirms broker-model valuation uses separate target futures for weekly and monthly legs; this is now a required Phase 9 validation item.
