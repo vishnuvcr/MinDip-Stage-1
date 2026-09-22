@@ -85,19 +85,20 @@ Gate achieved:
 - separate current-strategy metrics and friction decomposition produced.
 
 ### Phase 9 — Current-strategy robustness
-Status: Next
-Additional mandatory gate: reproduce the broker's multi-expiry valuation logic using separate weekly and monthly futures/forward inputs. Validate the screenshot's Intrinsic Value, Time Value, break-even levels, and payoff shape before using the chart as a benchmark.
-Gate:
+Status: In progress — broker model gate passed, execution gate underway
+Completed in this phase:
+- separate weekly/monthly futures recognized;
+- Black-76 leg IV calibration;
+- screenshot intrinsic value validation;
+- portfolio delta and vega validation;
+- screenshot POP approximation;
+- predefined slippage/cost stress.
+Remaining gate:
 - direct bid/ask or spread-aware execution;
 - historical broker/statutory fee reconstruction;
-- slippage stress beyond the current grid;
-- chronology/CPCV and untouched holdout using the corrected strategy;
+- chronology/CPCV and untouched holdout for the corrected strategy;
+- exact payoff/max-profit/max-loss replication if possible;
 - separate current-strategy manuscript addendum.
-Gate:
-- methods, results, inference, discussion, limitations, conclusion;
-- figures/tables/appendices;
-- reproducibility instructions;
-- future research proposals.
 
 ## Stop condition
 
