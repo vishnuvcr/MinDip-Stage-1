@@ -16,3 +16,8 @@ Note: this file stores the user-visible request and research actions, not privat
 ## 2026-09-22 — Phase 2 data acquisition started
 
 Reviewed prior project data-acquisition work, searched current public data sources, selected a pinned NIFTY/SENSEX intraday option source and a spot source, designed a reduced remote extract, and created the Phase 2 data-audit branch/workflow. A provider-schema mismatch was caught and fixed before empirical execution (E-0004).
+
+
+## 2026-09-22 — Phase 2 extraction outcome
+
+The end-to-end remote extractor reached the data and completed the calculation. Provisional output showed 34 NIFTY target cycles and 38 SENSEX target cycles, with 29 completed four-leg cycles for each. The first automated cache push failed because the branch changed during the long-running job; the workflow was made rebase-safe before retry.
