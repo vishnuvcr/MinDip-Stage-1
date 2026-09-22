@@ -69,7 +69,17 @@ Gate:
 - explicit promotion/rejection decision based on predeclared tests.
 
 ### Phase 6 — Manuscript & research conclusion
-Status: Complete
+Status: Complete for original written-rule experiment
+
+### Phase 7 — Screenshot strategy reconciliation
+Status: In progress
+Gate:
+- reproduce visible screenshot strikes from spot;
+- lower-PE / upper-CE ATM convention;
+- weekly PE offset frozen from visible worked example;
+- test Leg 4 one- and two-strike variants;
+- rerun historical sample without using Phase 6 results to tune the screenshot strategy;
+- issue a separate conclusion for the screenshot strategy.
 Gate:
 - methods, results, inference, discussion, limitations, conclusion;
 - figures/tables/appendices;
