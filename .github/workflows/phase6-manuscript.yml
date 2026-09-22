@@ -1,0 +1,29 @@
+name: Phase 6 — Manuscript and Research Conclusion
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "research/MIN_DIP_RESEARCH_MANUSCRIPT.md"
+      - "docs/FINAL_CONCLUSION.md"
+      - "docs/PHASE6_MANUSCRIPT_CHECKLIST.md"
+      - "docs/figures/**"
+
+jobs:
+  manuscript-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify required manuscript artifacts
+        run: |
+          test -s research/MIN_DIP_RESEARCH_MANUSCRIPT.md
+          test -s docs/FINAL_CONCLUSION.md
+          test -s docs/PHASE6_MANUSCRIPT_CHECKLIST.md
+          test -s docs/figures/cumulative_roc.svg
+          test -s docs/figures/slippage_sensitivity.svg
+          test -s docs/figures/zero_friction_vs_primary.svg
+          test -s docs/figures/cpcv_positive_combinations.svg
+      - name: Print conclusion
+        run: cat docs/FINAL_CONCLUSION.md
+      - name: Print manuscript checklist
+        run: cat docs/PHASE6_MANUSCRIPT_CHECKLIST.md
