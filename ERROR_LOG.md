@@ -87,3 +87,9 @@
 - Impact: the Phase 7 structure was still different and must not be used for the current question.
 - Fix: created Phase 8 and locked the latest four-leg structure before backtest.
 - Prevention: the newest explicit screenshot specification always supersedes earlier inferred screenshot variants unless the user says otherwise.
+
+
+### E-0015 — Phase 8 verification step initially failed after a successful calculation
+- Observed: the Phase 8 Python calculation completed successfully with NIFTY -7.34% ROC and SENSEX -4.15% ROC, but the first workflow verification step could not find the demo file because TICKER was not persisted between steps.
+- Fix: moved START/END/TICKER to the job-level environment and reran the workflow. The corrected run completed successfully and committed the reduced Phase 8 cache.
+- Prevention: job-wide environment variables are used for multi-step workflow state.
