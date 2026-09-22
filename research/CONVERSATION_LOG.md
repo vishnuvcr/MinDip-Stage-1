@@ -46,3 +46,8 @@ CPCV diagnostics over six chronology blocks and 15 two-block test combinations c
 ## 2026-09-22 — Phase 6 completed
 
 The final manuscript, figures, appendices, final conclusion, and manuscript gate checklist were committed. The Phase 6 conclusion is that the locked specification did not pass the historical promotion gate. No alternative parameter set was promoted; any future candidate family must begin as a separate preregistered experiment.
+
+
+## 2026-09-22 — Phase 7 correction initiated
+
+User clarified that the intended strategy is the strategy slide itself, not the earlier prose parameterization. The screenshot was re-read: the visible example maps 25,049.55 spot to 25,000 monthly PE, 25,200 weekly PE, 25,050 weekly CE and 25,000 monthly CE. Phase 7 was created to retest that structure, including the slide's explicit 1-or-2-strike Leg 4 ambiguity.
