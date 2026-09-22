@@ -56,3 +56,8 @@ User clarified that the intended strategy is the strategy slide itself, not the 
 ## 2026-09-23 — Latest screenshot supersedes earlier strategy definitions
 
 The user supplied two new screenshots. The editor screenshot is authoritative: NIFTY 23,329 with SELL 27-Oct 23,350 PE; BUY 27-Oct 23,250 CE; BUY 06-Oct 23,450 PE; SELL 06-Oct 23,350 CE. This is now locked as the Phase 8 strategy. The earlier Phase 7 screenshot interpretation is explicitly superseded and will not be used for the current backtest.
+
+
+## 2026-09-23 — Phase 8 current-strategy backtest completed
+
+The latest screenshots were checked directly. The exact current basket was locked as SELL monthly ATM PE, BUY monthly ATM−2 CE, BUY weekly ATM+2 PE, SELL weekly ATM CE. The corrected backtest used the existing Phase 2 exact-contract quote cache and completed successfully: NIFTY 33 cycles, net P&L ₹-11,014.58, ROC -7.34%; SENSEX 28 cycles, net P&L ₹-6,227.26, ROC -4.15%. Zero-slippage plus ₹160 fixed cost remained positive, while 0.5% slippage turned both negative. The current strategy therefore requires execution-quality validation before any stronger conclusion.
