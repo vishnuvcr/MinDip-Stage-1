@@ -72,14 +72,16 @@ Gate:
 Status: Complete for original written-rule experiment
 
 ### Phase 7 — Screenshot strategy reconciliation
+Status: Superseded by Phase 8
+
+### Phase 8 — Current uploaded screenshot strategy
 Status: In progress
 Gate:
-- reproduce visible screenshot strikes from spot;
-- lower-PE / upper-CE ATM convention;
-- weekly PE offset frozen from visible worked example;
-- test Leg 4 one- and two-strike variants;
-- rerun historical sample without using Phase 6 results to tune the screenshot strategy;
-- issue a separate conclusion for the screenshot strategy.
+- use latest uploaded editor/payoff screenshots as authoritative;
+- lock exact four legs: SELL monthly ATM PE; BUY monthly ATM-2 CE; BUY weekly ATM+2 PE; SELL weekly ATM CE;
+- use nearest strike as ATM;
+- rerun historical sample without using earlier results to select parameters;
+- produce separate metrics and conclusion for this exact strategy.
 Gate:
 - methods, results, inference, discussion, limitations, conclusion;
 - figures/tables/appendices;
