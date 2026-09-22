@@ -85,3 +85,8 @@ The complete research manuscript is in research/MIN_DIP_RESEARCH_MANUSCRIPT.md a
 ## Phase 8 — current screenshot strategy
 
 The latest screenshots are now the authoritative strategy specification. The current basket is: **SELL monthly ATM PE; BUY monthly ATM−2-strike CE; BUY weekly ATM+2-strike PE; SELL weekly ATM CE**. For the visible NIFTY example at 23,329 with 50-point strikes this maps to 23,350 PE sold, 23,250 CE bought, 23,450 PE bought, and 23,350 CE sold. The previous Phase 6/7 results are not applicable to this current strategy.
+
+
+## Phase 8 completed — latest uploaded strategy
+
+The latest screenshots supersede all earlier strategy interpretations. The exact current rule is: **SELL monthly ATM PE; BUY monthly ATM−2 CE; BUY weekly ATM+2 PE; SELL weekly ATM CE**. The corrected historical test over 2025-10-01 to 2026-05-27 produced 33 complete NIFTY cycles and 28 complete SENSEX cycles. With 0.5% adverse premium slippage and ₹160/cycle fixed cost, ROC was **-7.34% NIFTY** and **-4.15% SENSEX**. At 0% slippage with the same ₹160 fixed cost, both were positive; break-even slippage was approximately 0.257% NIFTY and 0.297% SENSEX. Thus the current research issue is execution realism, not merely strategy direction. See docs/PHASE8_RESULTS.md.
