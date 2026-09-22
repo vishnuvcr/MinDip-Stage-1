@@ -1,0 +1,29 @@
+name: Phase 0 — Protocol Check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "RESEARCH_PLAN.md"
+      - "STATUS.md"
+      - "ERROR_LOG.md"
+      - "MIN_DIP_PROJECT_INSTRUCTIONS.md"
+      - ".github/workflows/phase0-protocol-check.yml"
+
+jobs:
+  protocol-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify required governance files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s README.md
+          test -s RESEARCH_PLAN.md
+          test -s STATUS.md
+          test -s ERROR_LOG.md
+          test -s MIN_DIP_PROJECT_INSTRUCTIONS.md
+          test -s research/CONVERSATION_LOG.md
+      - name: Print phase status
+        run: sed -n '1,120p' STATUS.md
