@@ -1,0 +1,3 @@
+ticker,status,reason
+NIFTY,not_estimable,PBO requires a family of candidate strategies plus in-sample selection; the research plan has one locked primary strategy and no post-hoc strategy selection.
+SENSEX,not_estimable,PBO requires a family of candidate strategies plus in-sample selection; the research plan has one locked primary strategy and no post-hoc strategy selection.

@@ -1,0 +1,3 @@
+status,reason,trials,observations,observed_trade_sharpe,skewness,excess_kurtosis,ticker
+not_estimable_as_multiple_trial_DSR,Only one prespecified primary strategy exists; stress assumptions are not independent strategy trials.,1,33,-0.4254935448363359,-0.17639445398298384,-0.8854735413707293,NIFTY
+not_estimable_as_multiple_trial_DSR,Only one prespecified primary strategy exists; stress assumptions are not independent strategy trials.,1,28,-0.4001145229565493,0.07374685517958848,1.7180309405753889,SENSEX
