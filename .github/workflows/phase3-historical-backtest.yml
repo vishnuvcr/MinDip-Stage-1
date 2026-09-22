@@ -1,0 +1,57 @@
+name: Phase 3 — Historical Backtest and Statistical Report
+
+on:
+  workflow_dispatch:
+    inputs:
+      bootstraps:
+        description: Bootstrap repetitions for mean PnL and win rate
+        required: false
+        default: "10000"
+        type: string
+  push:
+    paths:
+      - "scripts/phase3_historical_backtest.py"
+      - "docs/PHASE3_RESULTS.md"
+      - ".github/workflows/phase3-historical-backtest.yml"
+      - "data/cache/phase2/**"
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Check Phase 2 cache
+        run: |
+          test -s data/cache/phase2/NIFTY_completed_cycles.csv
+          test -s data/cache/phase2/SENSEX_completed_cycles.csv
+          test -s data/cache/phase2/NIFTY_selected_legs.csv
+          test -s data/cache/phase2/SENSEX_selected_legs.csv
+      - name: Run statistical backtest report
+        env:
+          BOOTSTRAPS: ${{ inputs.bootstraps || '10000' }}
+          PYTHONPATH: .
+        run: |
+          python scripts/phase3_historical_backtest.py             --tickers NIFTY SENSEX             --output data/cache/phase3             --bootstraps "$BOOTSTRAPS"
+      - name: Print reports
+        run: |
+          cat data/cache/phase3/cross_index_metrics.csv
+          echo "---- leg contribution ----"
+          cat data/cache/phase3/cross_index_leg_contribution.csv
+      - name: Commit Phase 3 reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cache/phase3
+          if git diff --cached --quiet; then
+            echo "No Phase 3 changes."
+            exit 0
+          fi
+          git commit -m "phase-3: cache historical backtest statistics"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push
