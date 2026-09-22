@@ -40,3 +40,5 @@ Phase 9 broker-model reconciliation and close-based execution stress are complet
 - Phase 9 model reconciliation: **gate passed** — screenshot intrinsic/delta/vega/POP closely reproduced with separate expiry futures.
 - Phase 9 execution stress: **complete for close-based sensitivity** — current brokerage-only and locked-cost slippage thresholds calculated.
 - Phase 9 remaining: **historical bid/ask/spread reconstruction and date-specific all-in fee validation**.
+
+- Phase 9 corrected-strategy robustness: **complete** — bootstrap, 6-block CPCV, and untouched final-block holdout run on the current uploaded four-leg strategy.
