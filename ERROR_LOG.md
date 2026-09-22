@@ -119,3 +119,9 @@
 - Observed: the CPCV/bootstrap calculation was reached, but the untouched-holdout selection failed because a NumPy Index has no `.eq()` method.
 - Fix: replaced the holdout mask with a direct boolean comparison.
 - Prevention: keep holdout masks as explicit NumPy/pandas boolean arrays and run the workflow before accepting the phase gate.
+
+
+### E-0020 — Historical bid/ask execution validation unavailable from current cache
+- The canonical intraday source used by the research contains OHLC/volume candles, not historical bid/ask/queue depth.
+- Live market-feed documentation exposes bid/ask fields, but those are not present in the historical source cache.
+- Result: historical execution-quality validation is a declared limitation, not silently estimated from OHLC.
