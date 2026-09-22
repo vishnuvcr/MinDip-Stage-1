@@ -154,6 +154,10 @@ Deterministic bootstrap intervals for mean cycle P&L:
 
 The intervals remain below zero in this sample. This does not prove that the true future expectancy is negative; it indicates that the observed sample is inconsistent with a zero-mean trade outcome under the empirical bootstrap assumptions used.
 
+### Figure 1 — Equity curve
+
+[Equity curves SVG](figures/equity_curves.svg)
+
 ### 5.3 Monthly attribution
 
 NIFTY:
@@ -214,6 +218,10 @@ The common feature is a negative contribution from L3, the weekly ATM call buy, 
 
 This is the most important robustness finding. The strategy is already negative before the primary slippage assumption.
 
+### Figure 2 — Slippage stress
+
+[Slippage stress SVG](figures/slippage_stress.svg)
+
 ### 7.2 Break-even slippage
 
 The calculated aggregate break-even slippage is approximately:
@@ -256,6 +264,10 @@ No current-result claim is made about FII/DII flow, India VIX, gold, global mark
 
 ---
 
+### Figure 3 — Leg-level decomposition
+
+[Leg contribution SVG](figures/leg_contribution.svg)
+
 ## 9. CPCV-Style Stability
 
 The research enumerated all 2-of-6 test-block combinations, giving 15 chronological test paths per index.
@@ -269,6 +281,10 @@ The research enumerated all 2-of-6 test-block combinations, giving 15 chronologi
 | Median test P&L | ₹-17,317 | ₹-10,083 |
 
 The small percentage of positive paths is consistent with the negative full-sample result being distributed across time rather than isolated to a single subperiod.
+
+### Figure 4 — CPCV path Sharpe
+
+[CPCV path Sharpe SVG](figures/cpcv_path_sharpe.svg)
 
 ### Single-trial PSR diagnostic
 
@@ -434,7 +450,7 @@ Manual workflows:
 
 1. NSE, Equity Derivatives Contract Specifications: https://www.nseindia.com/static/products-services/equity-derivatives-contract-specifications
 2. NSE, NIFTY 50 derivatives product information: https://www.nseindia.com/static/products-services/equity-derivatives-nifty50
-3. BSE, June 23 2025 notice on SENSEX expiry-day revision.
+3. BSE, June 23 2025 notice on SENSEX expiry-day revision: https://www.bseindia.com/markets/MarketInfo/DispNewNoticesCirculars.aspx?page=20250623-59
 4. NSE Circular 176/2025 on revised NIFTY lot-size transition.
 5. Hugging Face dataset rissin/nse-options-intraday, pinned revision 8f7739cab3f38abdcbc6332a6d0a83e1341326e3.
 6. Hugging Face dataset thetrademarkk/india-index-options-1m, pinned revision 904fbfbf7d448e7007cd3dd197849ba561b30c06.
