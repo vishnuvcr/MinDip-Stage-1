@@ -12,7 +12,7 @@ import pandas as pd
 
 OPTION_URLS = {
     "NIFTY": [
-        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/main/upstox_intraday/NIFTY/NIFTY_2025.parquet",
+        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/8f7739cab3f38abdcbc6332a6d0a83e1341326e3/upstox_intraday/NIFTY/NIFTY_2025.parquet",
         "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/main/upstox_intraday/NIFTY/NIFTY_2026.parquet",
     ],
     "SENSEX": [
@@ -22,7 +22,7 @@ OPTION_URLS = {
 }
 
 SPOT_URLS = {
-    "NIFTY": "https://huggingface.co/datasets/thetrademarkk/india-index-options-1m/resolve/main/index/NIFTY.parquet",
+    "NIFTY": "https://huggingface.co/datasets/thetrademarkk/india-index-options-1m/resolve/904fbfbf7d448e7007cd3dd197849ba561b30c06/index/NIFTY.parquet",
     "SENSEX": "https://huggingface.co/datasets/thetrademarkk/india-index-options-1m/resolve/main/index/SENSEX.parquet",
 }
 
@@ -137,8 +137,7 @@ def spot_query(
             high,
             low,
             close,
-            volume,
-            open_interest
+            volume
         FROM {relation}
         WHERE symbol = {sql_quote(ticker)}
           AND CAST(trading_day AS DATE) BETWEEN DATE {sql_quote(start)} AND DATE {sql_quote(end)}
