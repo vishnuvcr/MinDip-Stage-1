@@ -16,12 +16,11 @@ Does the specified four-leg, multi-expiry reverse-calendar basket produce econom
 
 ### Phase 0 — Governance & reproducibility
 Status: Complete
-Gate: repository rules, plan, status, error log, action log, CI scaffold.
 
 ### Phase 1 — Strategy engine
-Status: In progress
-Gate:
-- exact input schema validation;
+Status: Complete pending CI/data validation
+Gate achieved:
+- input schema validation;
 - dynamic NIFTY/SENSEX configuration;
 - weekly/monthly expiry date math;
 - holiday roll;
@@ -30,7 +29,7 @@ Gate:
 - 0.5% adverse slippage on every leg at both entry and exit;
 - ₹40/leg cycle cost;
 - ₹1,50,000 static margin denominator;
-- deterministic unit tests.
+- deterministic unit tests and a manual workflow.
 
 ### Phase 2 — Data audit & cached data
 Status: Not started
