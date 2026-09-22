@@ -118,3 +118,8 @@ The broker model calibration is now complete and the close-based execution stres
 
 ### Phase 9 robustness result
 For the current uploaded strategy at 0.5% slippage + ₹160/cycle, 6-block CPCV produced positive test-block P&L in 40.0% of NIFTY and 46.7% of SENSEX combinations; median test mean P&L remained negative. The untouched final block was negative in both indices (-₹5,003 NIFTY; -₹2,991 SENSEX). Bootstrap 95% intervals for mean trade P&L included zero. Thus the current evidence is **execution-sensitive and statistically inconclusive**, not a robustly validated positive edge.
+
+
+## Phase 9 final conclusion
+
+Phase 9 is complete for the latest uploaded strategy. The broker-style multi-expiry valuation was independently reconciled, execution-cost stress was run, and current-strategy CPCV/bootstrap/untouched-holdout diagnostics were completed. The evidence is **execution-sensitive and statistically inconclusive**: the strategy has positive historical gross economics before sufficient friction, but the 0.5% execution model is negative and the final untouched block is negative for both indices. Historical bid/ask/market-depth and exact historical all-in charges are the remaining evidence gap. See `docs/PHASE9_CONCLUSION.md`.
