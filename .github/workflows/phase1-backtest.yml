@@ -40,9 +40,9 @@ jobs:
         run: python -m pytest -q
 
   cached-data-backtest:
-    if: ${{ github.event_name == 'workflow_dispatch' && hashFiles(inputs.input_csv) != '' }}
     needs: unit-tests
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -50,13 +50,22 @@ jobs:
           python-version: "3.11"
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Run requested index
+      - name: Run requested index when cached data exists
         env:
           PYTHONPATH: .
+          INPUT_CSV: ${{ inputs.input_csv }}
+          TICKER: ${{ inputs.ticker }}
         run: |
-          python -m src.multileg_options_backtest             --input "${{ inputs.input_csv }}"             --ticker "${{ inputs.ticker }}"             --output-dir outputs/backtest/${{ inputs.ticker }}
-      - name: Upload results
+          if [ ! -f "$INPUT_CSV" ]; then
+            echo "Cached input not present: $INPUT_CSV"
+            echo "Unit tests are still valid; skipping empirical run."
+            exit 0
+          fi
+          python -m src.multileg_options_backtest             --input "$INPUT_CSV"             --ticker "$TICKER"             --output-dir "outputs/backtest/$TICKER"
+      - name: Upload results when produced
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: backtest-${{ inputs.ticker }}
           path: outputs/backtest/${{ inputs.ticker }}
+          if-no-files-found: ignore
