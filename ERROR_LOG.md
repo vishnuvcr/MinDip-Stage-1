@@ -80,3 +80,10 @@
 - Observed: The screenshot-exact extraction completed successfully, but the generated cache push lost a race with another branch update.
 - Fix: reduced the cache to strategy-specific outputs rather than full spot archives and changed the workflow to force-with-lease after rebasing.
 - Prevention: do not cache entire minute-level spot histories when the strategy output only needs the selected cycle observations.
+
+
+### E-0014 — Latest screenshots supersede Phase 7 interpretation
+- Observation: the newest uploaded editor screenshot shows SELL monthly ATM PE, BUY monthly ATM-2 CE, BUY weekly ATM+2 PE, SELL weekly ATM CE.
+- Impact: the Phase 7 structure was still different and must not be used for the current question.
+- Fix: created Phase 8 and locked the latest four-leg structure before backtest.
+- Prevention: the newest explicit screenshot specification always supersedes earlier inferred screenshot variants unless the user says otherwise.
