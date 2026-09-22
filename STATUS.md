@@ -7,10 +7,10 @@ As of: 2026-09-22
 |---|---|---|
 | 0 Governance | Complete | Plan, instructions, status, errors, action log, CI scaffold created |
 | 1 Strategy engine | Complete pending CI/data validation | Dynamic NIFTY/SENSEX engine, cost model, expiry math, tests, workflow |
-| 2 Data audit | In progress | Remote point-in-time option/spot extraction, expiry/lot-size validation, reduced cache |
-| 3 Historical backtest | Not started | Requires cached production data |
-| 4 Robustness | Not started | Predeclared cost/liquidity/regime stress |
-| 5 CPCV/DSR/PBO | Not started | After locked backtest |
+| 2 Data audit | Complete with caveat | Corrected holiday calendar, provenance, missing-data audit, reduced cache |
+| 3 Historical backtest | Complete | 33 NIFTY and 28 SENSEX complete cycles; trade-level statistics and bootstrap diagnostics cached |
+| 4 Robustness | Complete | Cost/slippage grid, break-even friction, chronology blocks, volatility context; bid/ask limitation retained |
+| 5 CPCV/DSR/PBO | Next | Single prespecified strategy: CPCV stability + DSR diagnostic; PBO only if multiple candidate trials are genuinely available |
 | 6 Manuscript | Not started | Final structured research report |
 
 ## Software verification status
@@ -27,4 +27,4 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 2 extraction code has run successfully against the remote data source; the first cache commit hit a Git race and was rejected. The workflow was patched to rebase before pushing, and the phase remains in progress until the cache is persisted and audited.
+Phase 4 robustness stress is complete. The workflow confirmed the locked result is negative even under zero-friction counterfactuals. Phase 5 is the next gate.
