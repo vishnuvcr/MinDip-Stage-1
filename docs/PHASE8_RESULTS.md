@@ -96,3 +96,16 @@ That makes direct bid/ask validation the key next research step. Close-only data
 ## Research status
 
 This result is the corrected primary result for the latest uploaded screenshot strategy. It should be used for any subsequent robustness, CPCV, DSR/PBO, and manuscript work concerning this strategy. Older Phase 6 and Phase 7 numerical results remain archived as superseded experiments.
+
+## Screenshot valuation reconciliation
+
+The latest Summary screenshot provides a direct consistency check. With lot size 65, weekly FUT 23,436.90, monthly FUT 23,510.00:
+- short monthly 23,350 PE intrinsic = 0;
+- long monthly 23,250 CE intrinsic = 260.0;
+- long weekly 23,450 PE intrinsic = 13.1;
+- short weekly 23,350 CE intrinsic = -86.9;
+- total intrinsic = 186.2 points × 65 = ₹12,103, matching the displayed ₹12,100 after rounding.
+
+The strategy's entered net premium is ₹180.75 × 65 = ₹11,748.75. Thus the broker's displayed Time Value of approximately -₹351 is consistent with premium minus model intrinsic after rounding. This is a strong validation that the app is valuing the two expiries separately.
+
+The displayed POP, break-evens, max profit and max loss are model outputs. They are not interchangeable with historical win rate, historical expectancy, or a guaranteed payoff.
