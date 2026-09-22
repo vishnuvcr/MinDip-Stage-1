@@ -93,3 +93,10 @@
 - Observed: the Phase 8 Python calculation completed successfully with NIFTY -7.34% ROC and SENSEX -4.15% ROC, but the first workflow verification step could not find the demo file because TICKER was not persisted between steps.
 - Fix: moved START/END/TICKER to the job-level environment and reran the workflow. The corrected run completed successfully and committed the reduced Phase 8 cache.
 - Prevention: job-wide environment variables are used for multi-step workflow state.
+
+
+### E-0016 — Payoff chart uses expiry-specific futures assumptions
+- New evidence: the Summary displays 06-Oct FUT 23,436.90 and 27-Oct FUT 23,510.00 separately.
+- Finding: the displayed ₹12,100 intrinsic value is reproduced by valuing weekly legs at 23,436.90 and monthly legs at 23,510.00; using a single spot price would not reproduce it.
+- Consequence: the broker's payoff chart is a multi-expiry model, not a single-expiry intrinsic payoff.
+- Action: Phase 9 must model the two expiry forwards/futures separately before judging historical equivalence.
