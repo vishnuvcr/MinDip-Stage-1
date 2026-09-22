@@ -225,9 +225,9 @@ def option_extract(
     cycles: pd.DataFrame,
     ticker: str,
 ) -> pd.DataFrame:
-    cycles = cycles[cycles.get("spot_available", False).astype(bool)].copy()
-    if cycles.empty:
+    if cycles.empty or "spot_available" not in cycles.columns:
         return pd.DataFrame()
+    cycles = cycles[cycles["spot_available"].astype(bool)].copy()
 
     rule = RULES[ticker]
     wanted = []
