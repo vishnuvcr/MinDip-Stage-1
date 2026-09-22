@@ -27,4 +27,4 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 2 data-audit infrastructure committed on branch phase-2-data-audit; GitHub Actions data run pending.
+Phase 2 extraction code has run successfully against the remote data source; the first cache commit hit a Git race and was rejected. The workflow was patched to rebase before pushing, and the phase remains in progress until the cache is persisted and audited.
