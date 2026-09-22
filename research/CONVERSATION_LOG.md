@@ -31,3 +31,7 @@ The first end-to-end extraction produced a material methodology bug: absent spot
 ## 2026-09-22 — Phase 2 corrected result
 
 The corrected GitHub Actions extraction completed successfully using explicit holidays and the common 2025-10-01 to 2026-05-27 window. Final Phase 2 audit counts: 34 target cycles for each index, 33 complete NIFTY baskets and 28 complete SENSEX baskets. Net ROC under the locked cost/slippage assumptions was approximately -29.88% and -22.28% respectively. The initial calendar-derived result was superseded and is not used going forward.
+
+## 2026-09-22 — Final research conclusion
+
+Phases 3–6 completed. The corrected primary sample shows negative expectancy in both indices; zero-friction tests remain negative; robustness stress remains negative; CPCV-style chronological paths are predominantly negative; and the full manuscript with figures, appendices and future research is committed.
