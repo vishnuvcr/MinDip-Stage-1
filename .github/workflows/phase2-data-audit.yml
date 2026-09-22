@@ -1,0 +1,62 @@
+name: Phase 2 — Data Audit and Locked Strategy Pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: Inclusive sample start date
+        required: false
+        default: "2025-10-01"
+        type: string
+      end:
+        description: Inclusive sample end date
+        required: false
+        default: "2026-09-22"
+        type: string
+  push:
+    paths:
+      - "scripts/phase2_remote_extract.py"
+      - "docs/DATA_SOURCE_REGISTRY.md"
+      - "docs/PHASE2_DATA_AUDIT.md"
+      - ".github/workflows/phase2-data-audit.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  phase2-extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install data-query dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pandas duckdb huggingface_hub
+
+      - name: Run remote data extraction and audit
+        env:
+          START_DATE: ${{ inputs.start || '2025-10-01' }}
+          END_DATE: ${{ inputs.end || '2026-09-22' }}
+        run: |
+          python scripts/phase2_remote_extract.py             --start "$START_DATE"             --end "$END_DATE"             --output data/cache/phase2
+
+      - name: Show cached result sizes
+        run: du -ah data/cache/phase2 | sort -h | tail -n 30
+
+      - name: Commit reduced research cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cache/phase2
+          if git diff --cached --quiet; then
+            echo "No cache changes."
+            exit 0
+          fi
+          git commit -m "phase-2: cache locked strategy data-audit extract"
+          git push
