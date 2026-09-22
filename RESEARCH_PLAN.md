@@ -61,7 +61,7 @@ Gate:
 - parameter sensitivity that does not change the locked primary result.
 
 ### Phase 5 — CPCV / DSR / PBO
-Status: Next
+Status: Complete
 Gate:
 - chronology-safe cross-validation;
 - multiple-testing correction;
@@ -69,7 +69,7 @@ Gate:
 - explicit promotion/rejection decision based on predeclared tests.
 
 ### Phase 6 — Manuscript & research conclusion
-Status: Not started
+Status: Next
 Gate:
 - methods, results, inference, discussion, limitations, conclusion;
 - figures/tables/appendices;
