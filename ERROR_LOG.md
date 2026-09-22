@@ -106,3 +106,10 @@
 - Observed: Black-76 calibration and all verification assertions completed successfully, but the workflow failed while rebasing because the generated Excel workbook was added concurrently to the branch.
 - Fix: workflow cache commits now stage only CSV/JSON outputs for the reconciliation phase; the existing workbook remains available but is not part of the race-prone automated commit.
 - Prevention: avoid binary generated artifacts in concurrent research workflow commits; keep machine-readable canonical outputs in CSV/JSON.
+
+
+### E-0018 — Initial Phase 9 break-even report used stale surface coefficients
+- Observed: the first execution-stress cache reported inconsistent break-even slippage relative to its own 0% and 0.5% stress P&L points.
+- Cause: break-even was calculated from an intermediate coefficient convention rather than interpolated directly from the tested stress surface.
+- Fix: break-even is now derived by interpolation on the actual computed stress surface; current thresholds are 0.3150%/0.3701% under ₹80 brokerage-only and 0.2567%/0.2971% under ₹160.
+- Prevention: derive threshold metrics from the canonical output surface used for the reported stress results.
