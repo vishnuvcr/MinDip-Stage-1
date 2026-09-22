@@ -1,59 +1,64 @@
 {
   "start": "2025-10-01",
-  "end": "2026-09-22",
+  "end": "2026-05-27",
+  "calendar_file": "data/calendar/exchange_holidays.csv",
   "strategy": "locked four-leg reverse-calendar",
   "slippage_rate": 0.005,
   "fixed_cost_per_cycle": 160.0,
   "capital_denominator": 150000.0,
   "options_source_revision": "8f7739c",
   "files": {
+    "MANIFEST.json": {
+      "bytes": 1981,
+      "sha256": "af26c4ffbeebb798ab3f3aaf33434ed0344b168e882cf344d12e6ab9e00a1fa7"
+    },
     "NIFTY_completed_cycles.csv": {
-      "bytes": 4160,
-      "sha256": "c9a916ab58cf9a3b11b24a139ff3e6f8f224a0d7c1b5846e62e472650bb0a5bc"
+      "bytes": 4941,
+      "sha256": "06949267b9afe1344b8d1efc5c28492c85cacb4467e9730ef85aa66acec0b2e8"
     },
     "NIFTY_cycles_target.csv": {
-      "bytes": 3243,
-      "sha256": "076aa44295a02421461b3ddc22a00871b839830d30150f99dcc87493a3d95fae"
+      "bytes": 3474,
+      "sha256": "38603cfb3d3569cedd3fbbe86b5fd0d4640aa42e6397979399d39d3e5c1679b4"
     },
     "NIFTY_legs_quotes.csv": {
-      "bytes": 36129,
-      "sha256": "479a88ea666e1ae31b2b5f6eb149a8806b0c7994a62262ba907df052f26d30a1"
+      "bytes": 37303,
+      "sha256": "09a6e918ce803361cc24255e7040f996fc65ddb12f88fa2aa4678b711674744a"
     },
     "NIFTY_selected_legs.csv": {
-      "bytes": 40478,
-      "sha256": "ec42ef682fa78708e4073afdd896c7fe2c60971367fa072e80c8c9eee7f8bba5"
+      "bytes": 43649,
+      "sha256": "33d9b491c405e256518855046792d5cca89bfcf489d952ab238094e5b3d2c6f7"
     },
     "NIFTY_spot_0930.csv": {
       "bytes": 75895,
       "sha256": "de38f85b5aa1a3610767b54173f53c90c032477847d421ed97b5cbbb95e79a3a"
     },
     "SENSEX_completed_cycles.csv": {
-      "bytes": 4194,
-      "sha256": "a05072c5ef48291fed1742679ba509eae0a13cc0783837c8c7a0274c193a22ca"
+      "bytes": 4250,
+      "sha256": "201db9740bcd0e2d03a057b48de55b7ad9aede73762532df30fb323eca05e3e4"
     },
     "SENSEX_cycles_target.csv": {
-      "bytes": 3671,
-      "sha256": "3bd88675be935466faa49c9ce11cdf82e949e14ede13545836322a17717db337"
+      "bytes": 3504,
+      "sha256": "bc204fab8d40baced497cf861e7ea280b22f176550b11c4ec0131f1d234c2f59"
     },
     "SENSEX_legs_quotes.csv": {
-      "bytes": 39674,
-      "sha256": "a43ceb1329b920bbe80a0e4ff64d00cd39f38ccda5b392e12c073d991989bd4f"
+      "bytes": 35152,
+      "sha256": "067ca3130cc2cde31c8280a276b92f7568ba638bd66e9bd81e4fd3e1926d7481"
     },
     "SENSEX_selected_legs.csv": {
-      "bytes": 42963,
-      "sha256": "d0bade401c7ff79b8c835de3971812b93903e5fcfc5c3868e16cd977ff6ab8d8"
+      "bytes": 38888,
+      "sha256": "cd76d4d898064c0da740469877fff7baea9ec81de182d9faf42f19c7bc185be2"
     },
     "SENSEX_spot_0930.csv": {
-      "bytes": 88679,
-      "sha256": "559bfc6c7ef63b01431034e7e51e3d9395839b417801c0f5d78a1f3e23cd0aee"
+      "bytes": 78321,
+      "sha256": "31abbe89698b1fca1ccec15210d44a01e63263d1e765e6cee33cb3b71c02ad40"
     },
     "cross_index_metrics.csv": {
-      "bytes": 584,
-      "sha256": "e42284a2705c17fbb31c8cab5aef9b50c8d1ed2b767591f2b18a3fa041e70cdd"
+      "bytes": 621,
+      "sha256": "403350973aca4904102d0b6ce73c2e9ca34a93bc7c1041b8e0bec2d49150975f"
     },
     "data_audit_summary.csv": {
-      "bytes": 905,
-      "sha256": "27403716e62467ab1dc27b032b9990f81ec50700b52f9a5d8e63698854211212"
+      "bytes": 1100,
+      "sha256": "77f2520b2aa3c5580c18e32019a61c9520c017cc35924ba8a64af1cf19422562"
     }
   }
 }
