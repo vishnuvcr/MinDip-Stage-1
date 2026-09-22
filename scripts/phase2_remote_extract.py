@@ -13,17 +13,17 @@ import pandas as pd
 OPTION_URLS = {
     "NIFTY": [
         "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/8f7739cab3f38abdcbc6332a6d0a83e1341326e3/upstox_intraday/NIFTY/NIFTY_2025.parquet",
-        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/main/upstox_intraday/NIFTY/NIFTY_2026.parquet",
+        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/8f7739cab3f38abdcbc6332a6d0a83e1341326e3/upstox_intraday/NIFTY/NIFTY_2026.parquet",
     ],
     "SENSEX": [
-        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/main/upstox_intraday/SENSEX/SENSEX_2025.parquet",
-        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/main/upstox_intraday/SENSEX/SENSEX_2026.parquet",
+        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/8f7739cab3f38abdcbc6332a6d0a83e1341326e3/upstox_intraday/SENSEX/SENSEX_2025.parquet",
+        "https://huggingface.co/datasets/rissin/nse-options-intraday/resolve/8f7739cab3f38abdcbc6332a6d0a83e1341326e3/upstox_intraday/SENSEX/SENSEX_2026.parquet",
     ],
 }
 
 SPOT_URLS = {
     "NIFTY": "https://huggingface.co/datasets/thetrademarkk/india-index-options-1m/resolve/904fbfbf7d448e7007cd3dd197849ba561b30c06/index/NIFTY.parquet",
-    "SENSEX": "https://huggingface.co/datasets/thetrademarkk/india-index-options-1m/resolve/main/index/SENSEX.parquet",
+    "SENSEX": "https://huggingface.co/datasets/thetrademarkk/india-index-options-1m/resolve/904fbfbf7d448e7007cd3dd197849ba561b30c06/index/SENSEX.parquet",
 }
 
 
@@ -54,28 +54,43 @@ def last_weekday(year: int, month: int, weekday: int) -> pd.Timestamp:
     return last - pd.Timedelta(days=(last.weekday() - weekday) % 7)
 
 
+def load_holidays(path: Path, ticker: str) -> set[pd.Timestamp]:
+    df = pd.read_csv(path)
+    required = {"Ticker", "Date"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"Holiday file missing columns: {sorted(missing)}")
+    rows = df[df["Ticker"].astype(str).str.upper() == ticker].copy()
+    return set(pd.to_datetime(rows["Date"], errors="coerce").dropna().dt.normalize())
+
+
+def is_trading_day(day: pd.Timestamp, holidays: set[pd.Timestamp]) -> bool:
+    d = pd.Timestamp(day).normalize()
+    return d.weekday() < 5 and d not in holidays
+
+
 def previous_trading_day(
     scheduled: pd.Timestamp,
-    trading_dates: set[pd.Timestamp],
-) -> pd.Timestamp | None:
+    holidays: set[pd.Timestamp],
+) -> pd.Timestamp:
     x = pd.Timestamp(scheduled).normalize()
-    for _ in range(10):
-        if x in trading_dates:
+    for _ in range(370):
+        if is_trading_day(x, holidays):
             return x
         x -= pd.Timedelta(days=1)
-    return None
+    raise ValueError(f"Could not resolve previous trading day for {scheduled}")
 
 
 def next_expiry_after(
     entry: pd.Timestamp,
     rule: StrategyRule,
-    trading_dates: set[pd.Timestamp],
+    holidays: set[pd.Timestamp],
 ) -> pd.Timestamp | None:
     x = entry + pd.Timedelta(days=1)
-    for _ in range(21):
+    for _ in range(60):
         if x.weekday() == rule.weekday_expiry:
-            actual = previous_trading_day(x, trading_dates)
-            if actual is not None and actual > entry:
+            actual = previous_trading_day(x, holidays)
+            if actual > entry:
                 return actual
         x += pd.Timedelta(days=1)
     return None
@@ -84,13 +99,13 @@ def next_expiry_after(
 def next_monthly_after(
     entry: pd.Timestamp,
     rule: StrategyRule,
-    trading_dates: set[pd.Timestamp],
+    holidays: set[pd.Timestamp],
 ) -> pd.Timestamp | None:
     cursor = entry
     for _ in range(24):
         candidate = last_weekday(cursor.year, cursor.month, rule.weekday_expiry)
-        actual = previous_trading_day(candidate, trading_dates)
-        if actual is not None and actual > entry:
+        actual = previous_trading_day(candidate, holidays)
+        if actual > entry:
             return actual
         cursor = (cursor + pd.offsets.MonthBegin(1)).normalize()
     return None
@@ -100,14 +115,14 @@ def trading_cycle_dates(
     min_day: pd.Timestamp,
     max_day: pd.Timestamp,
     rule: StrategyRule,
-    trading_dates: set[pd.Timestamp],
+    holidays: set[pd.Timestamp],
 ):
     current = pd.Timestamp(min_day).normalize()
     out = []
     while current <= pd.Timestamp(max_day).normalize():
         if current.weekday() == rule.cycle_entry_weekday:
-            actual = previous_trading_day(current, trading_dates)
-            if actual is not None and min_day <= actual <= max_day:
+            actual = previous_trading_day(current, holidays)
+            if min_day <= actual <= max_day:
                 out.append((current, actual))
         current += pd.Timedelta(days=1)
     return out
@@ -153,22 +168,37 @@ def build_cycles(
     ticker: str,
     start: str,
     end: str,
+    holidays: set[pd.Timestamp],
 ) -> pd.DataFrame:
     rule = RULES[ticker]
-    days = set(pd.to_datetime(spot["trading_day"]).dt.normalize())
-    pairs = trading_cycle_dates(pd.Timestamp(start), pd.Timestamp(end), rule, days)
+    pairs = trading_cycle_dates(pd.Timestamp(start), pd.Timestamp(end), rule, holidays)
     cycles = []
+    spot_days = pd.to_datetime(spot["trading_day"]).dt.normalize()
 
     for scheduled, entry in pairs:
-        weekly = next_expiry_after(entry, rule, days)
-        monthly = next_monthly_after(entry, rule, days)
+        weekly = next_expiry_after(entry, rule, holidays)
+        monthly = next_monthly_after(entry, rule, holidays)
         if weekly is None or monthly is None or weekly > pd.Timestamp(end):
             continue
 
-        spot_days = pd.to_datetime(spot["trading_day"]).dt.normalize()
         rows = spot[spot_days.eq(pd.Timestamp(entry).normalize())].sort_values("timestamp")
         rows = rows[rows["timestamp"].dt.time >= pd.Timestamp("09:30:00").time()]
+
         if rows.empty:
+            cycles.append(
+                {
+                    "ticker": ticker,
+                    "scheduled_entry_date": scheduled,
+                    "entry_date": entry,
+                    "weekly_expiry": weekly,
+                    "monthly_expiry": monthly,
+                    "spot": np.nan,
+                    "spot_timestamp": pd.NaT,
+                    "atm_strike": np.nan,
+                    "spot_available": False,
+                    "skip_reason": "missing_spot_0930",
+                }
+            )
             continue
 
         snap = rows.iloc[0]
@@ -182,6 +212,8 @@ def build_cycles(
                 "spot": float(snap["close"]),
                 "spot_timestamp": pd.Timestamp(snap["timestamp"]),
                 "atm_strike": half_up_strike(float(snap["close"]), rule.interval),
+                "spot_available": True,
+                "skip_reason": "",
             }
         )
 
@@ -193,6 +225,7 @@ def option_extract(
     cycles: pd.DataFrame,
     ticker: str,
 ) -> pd.DataFrame:
+    cycles = cycles[cycles.get("spot_available", False).astype(bool)].copy()
     if cycles.empty:
         return pd.DataFrame()
 
@@ -449,7 +482,7 @@ def sha256_file(path: Path) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--start", default="2025-10-01")
-    parser.add_argument("--end", default="2026-09-22")
+    parser.add_argument("--end", default="2026-05-27")
     parser.add_argument("--output", default="data/cache/phase2")
     args = parser.parse_args()
 
@@ -467,7 +500,8 @@ def main():
         spot = spot_query(con, ticker, args.start, args.end)
         spot.to_csv(out / f"{ticker}_spot_0930.csv", index=False)
 
-        cycles = build_cycles(spot, ticker, args.start, args.end)
+        holidays = load_holidays(Path("data/calendar/exchange_holidays.csv"), ticker)
+        cycles = build_cycles(spot, ticker, args.start, args.end, holidays)
         cycles.to_csv(out / f"{ticker}_cycles_target.csv", index=False)
 
         legs = option_extract(con, cycles, ticker)
@@ -480,6 +514,8 @@ def main():
         m = dict(metrics)
         m["ticker"] = ticker
         m["target_cycles"] = int(len(cycles))
+        m["spot_available_cycles"] = int(cycles["spot_available"].sum()) if not cycles.empty else 0
+        m["missing_spot_cycles"] = int((~cycles["spot_available"]).sum()) if not cycles.empty else 0
         m["selected_legs"] = int(len(selected))
         m["complete_cycles"] = int(len(completed))
         all_metrics.append(m)
@@ -489,6 +525,8 @@ def main():
                 "ticker": ticker,
                 "spot_rows": int(len(spot)),
                 "target_cycles": int(len(cycles)),
+                "spot_available_cycles": int(cycles["spot_available"].sum()) if not cycles.empty else 0,
+                "missing_spot_cycles": int((~cycles["spot_available"]).sum()) if not cycles.empty else 0,
                 "selected_leg_rows": int(len(selected)),
                 "complete_cycles": int(len(completed)),
                 "source_option_urls": json.dumps(OPTION_URLS[ticker]),
@@ -503,6 +541,7 @@ def main():
     manifest = {
         "start": args.start,
         "end": args.end,
+        "calendar_file": "data/calendar/exchange_holidays.csv",
         "strategy": "locked four-leg reverse-calendar",
         "slippage_rate": 0.005,
         "fixed_cost_per_cycle": 160.0,
