@@ -44,3 +44,9 @@
 - Impact: Several monthly expiries were assigned to the wrong calendar date, including SENSEX October 2025 and NIFTY May 2026.
 - Fix: Added an explicit exchange holiday calendar and separated holiday logic from spot-data availability. The sample end was also aligned to the common spot-data coverage date of 2026-05-27.
 - Prevention: Never infer exchange calendars from missing market observations; calendar provenance is now an independent research input.
+
+
+### E-0008 — Corrected extraction changes the historical result
+- After the calendar correction, the locked sample produced 33 NIFTY and 28 SENSEX complete baskets rather than the initial 29/29.
+- The corrected primary result is retained; the superseded result must not be used in later analysis.
+- The superseded cache was overwritten by the corrected workflow output and the provenance manifest was refreshed.
