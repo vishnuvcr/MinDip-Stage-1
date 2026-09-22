@@ -69,7 +69,7 @@ Gate:
 - explicit promotion/rejection decision based on predeclared tests.
 
 ### Phase 6 — Manuscript & research conclusion
-Status: Next
+Status: Complete
 Gate:
 - methods, results, inference, discussion, limitations, conclusion;
 - figures/tables/appendices;
