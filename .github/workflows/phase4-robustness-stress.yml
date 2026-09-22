@@ -1,0 +1,43 @@
+name: Phase 4 — Robustness and Cost Stress
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/phase4_robustness_stress.py"
+      - "docs/PHASE4_RESULTS.md"
+      - ".github/workflows/phase4-robustness-stress.yml"
+      - "data/cache/phase3/**"
+
+jobs:
+  stress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run slippage, cost, chronology and regime diagnostics
+        env:
+          PYTHONPATH: .
+        run: python scripts/phase4_robustness_stress.py --output data/cache/phase4
+      - name: Print stress summary
+        run: |
+          cat data/cache/phase4/cross_index_slippage_cost_summary.csv
+          echo "---- break-even slippage ----"
+          cat data/cache/phase4/break_even_slippage.csv
+      - name: Commit stress outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cache/phase4
+          if git diff --cached --quiet; then
+            echo "No Phase 4 changes."
+            exit 0
+          fi
+          git commit -m "phase-4: cache robustness stress results"
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push
