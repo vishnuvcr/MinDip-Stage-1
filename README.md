@@ -94,3 +94,8 @@ The latest screenshots supersede all earlier strategy interpretations. The exact
 
 ### New payoff-model finding
 The latest screenshots show the broker explicitly using separate target-day futures: 06-Oct FUT 23,436.90 and 27-Oct FUT 23,510.00. The ₹12,100 Intrinsic Value can be reproduced exactly to rounding from the four legs when weekly options are valued against the 06-Oct future and monthly options against the 27-Oct future. This confirms that the broker payoff is a multi-expiry forward/futures valuation, not a single-spot payoff. Phase 9 must reproduce this convention before comparing the backtest with the app.
+
+
+## Phase 9 progress
+
+The broker-style model has now been independently calibrated with Black-76 using the separate weekly/monthly futures shown in the screenshots. It reproduces ₹12,100 intrinsic to within ₹3, portfolio delta (-0.04094 vs displayed -0.041), portfolio vega (-0.6685 vs -0.67), and the displayed 96% POP approximately (95.38%). The remaining uncertainty is the exact broker theta/decay convention and the exact payoff/max-profit/max-loss curve. Execution-cost stress is now being run using current Paytm brokerage as a separate operational scenario; direct historical bid/ask data and date-specific statutory charges remain outstanding.
