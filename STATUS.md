@@ -36,3 +36,7 @@ Phase 6 manuscript gate is complete. The final conclusion is that the locked spe
 - New screenshot evidence confirms broker-model valuation uses separate target futures for weekly and monthly legs; this is now a required Phase 9 validation item.
 
 | 9 Broker model & execution realism | In progress | Black-76 calibration reproduces screenshot intrinsic/delta/vega/POP closely; execution-cost stress added; bid/ask validation remains |
+
+- Phase 9 model reconciliation: **gate passed** — screenshot intrinsic/delta/vega/POP closely reproduced with separate expiry futures.
+- Phase 9 execution stress: **complete for close-based sensitivity** — current brokerage-only and locked-cost slippage thresholds calculated.
+- Phase 9 remaining: **historical bid/ask/spread reconstruction and date-specific all-in fee validation**.
