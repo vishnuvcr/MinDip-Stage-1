@@ -32,7 +32,7 @@ Gate achieved:
 - deterministic unit tests and a manual workflow.
 
 ### Phase 2 — Data audit & cached data
-Status: Not started
+Status: In progress
 Gate:
 - point-in-time dataset provenance;
 - spot coverage at entry;
