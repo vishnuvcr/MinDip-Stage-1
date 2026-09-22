@@ -63,3 +63,5 @@ jobs:
           git fetch origin "$GITHUB_REF_NAME"
           git rebase "origin/$GITHUB_REF_NAME"
           git push --force-with-lease
+
+# Phase 8 uses cached Phase 2 contract quotes for deterministic fast re-runs.
