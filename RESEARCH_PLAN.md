@@ -86,6 +86,7 @@ Gate achieved:
 
 ### Phase 9 — Current-strategy robustness
 Status: Next
+Additional mandatory gate: reproduce the broker's multi-expiry valuation logic using separate weekly and monthly futures/forward inputs. Validate the screenshot's Intrinsic Value, Time Value, break-even levels, and payoff shape before using the chart as a benchmark.
 Gate:
 - direct bid/ask or spread-aware execution;
 - historical broker/statutory fee reconstruction;
