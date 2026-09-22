@@ -62,3 +62,9 @@
 - Observation: the research has only one prespecified strategy, so standard multiple-trial DSR and PBO cannot be validly estimated.
 - Fix: report them as not estimable and provide the observed Sharpe/skew/kurtosis plus CPCV and permutation diagnostics instead.
 - Prevention: do not create artificial candidate trials from cost/slippage stress cells.
+
+### E-0011 — Phase 7 workflow input escaping
+- Observed: the first screenshot-exact workflow passed the literal strings "\2025-10-01" and "\2026-05-27" to the Python script.
+- Cause: GitHub Actions expressions were over-escaped when embedded in the repository-management command.
+- Fix: rewrote the workflow so the GitHub expression is emitted literally as ${{ ... }}.
+- Prevention: inspect rendered workflow YAML before running a data-extraction phase.
