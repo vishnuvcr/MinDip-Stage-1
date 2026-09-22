@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="100%" height="100%" fill="white"/>
+<text x="450" y="28" text-anchor="middle" font-size="20" font-family="sans-serif">Net P&amp;L sensitivity to premium slippage (₹160 fixed cost)</text>
+<text x="15" y="240" transform="rotate(-90 15 240)" text-anchor="middle" font-size="13" font-family="sans-serif">Net P&amp;L (₹)</text>
+<line x1="70" x2="870" y1="410" y2="410" stroke="#ddd"/><line x1="70" x2="870" y1="339" y2="339" stroke="#ddd"/><line x1="70" x2="870" y1="268" y2="268" stroke="#ddd"/><line x1="70" x2="870" y1="197" y2="197" stroke="#ddd"/><line x1="70" x2="870" y1="126" y2="126" stroke="#ddd"/><line x1="70" x2="870" y1="55" y2="55" stroke="#ddd"/>
+<line x1="70" x2="870" y1="410" y2="410" stroke="#333"/><line x1="70" x2="70" y1="55" y2="410" stroke="#333"/>
+<polyline fill="none" stroke="#1f77b4" stroke-width="2.5" points="70,105 270,175 470,245 670,315 870,386"/>
+<polyline fill="none" stroke="#d62728" stroke-width="2.5" points="70,80 270,127 470,175 670,222 870,270"/>
+<text x="70" y="438" text-anchor="middle" font-size="10" font-family="sans-serif">0.00%</text><text x="270" y="438" text-anchor="middle" font-size="10" font-family="sans-serif">0.25%</text><text x="470" y="438" text-anchor="middle" font-size="10" font-family="sans-serif">0.50%</text><text x="670" y="438" text-anchor="middle" font-size="10" font-family="sans-serif">0.75%</text><text x="870" y="438" text-anchor="middle" font-size="10" font-family="sans-serif">1.00%</text>
+<line x1="90" x2="112" y1="44" y2="44" stroke="#1f77b4" stroke-width="3"/><text x="118" y="48" font-size="11" font-family="sans-serif">NIFTY</text><line x1="240" x2="262" y1="44" y2="44" stroke="#d62728" stroke-width="3"/><text x="268" y="48" font-size="11" font-family="sans-serif">SENSEX</text>
+</svg>
