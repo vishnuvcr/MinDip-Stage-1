@@ -25,3 +25,9 @@
 - Correct schema: `underlying`, `date`, and `oi`.
 - Fix: patched the option query before relying on any empirical output.
 - Prevention: pin and audit provider schemas before extracting historical results.
+
+### E-0005 — Spot source schema mismatch
+- Observed: Phase 2 workflow failed because the selected spot file does not expose `open_interest` in its index table.
+- Cause: the source tree contains OHLCV index rows without that field in the queried file.
+- Fix: removed `open_interest` from the spot query and pinned both source families to immutable revisions.
+- Prevention: treat each file partition's schema independently; do not infer option-chain columns from spot schema.
