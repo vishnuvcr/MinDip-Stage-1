@@ -32,7 +32,7 @@ Gate achieved:
 - deterministic unit tests and a manual workflow.
 
 ### Phase 2 — Data audit & cached data
-Status: Not started
+Status: Complete with calendar-source caveat
 Gate:
 - point-in-time dataset provenance;
 - spot coverage at entry;
@@ -69,7 +69,7 @@ Gate:
 - explicit promotion/rejection decision based on predeclared tests.
 
 ### Phase 6 — Manuscript & research conclusion
-Status: Not started
+Status: Complete
 Gate:
 - methods, results, inference, discussion, limitations, conclusion;
 - figures/tables/appendices;

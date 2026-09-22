@@ -11,3 +11,27 @@ Research actions: checked current official/primary exchange expiry references; r
 Execution note: local GitHub clone was blocked by container DNS; this was logged as E-0003. No empirical profitability result was inferred from synthetic tests.
 
 Note: this file stores the user-visible request and research actions, not private hidden chain-of-thought.
+
+
+## 2026-09-22 — Phase 2 data acquisition started
+
+Reviewed prior project data-acquisition work, searched current public data sources, selected a pinned NIFTY/SENSEX intraday option source and a spot source, designed a reduced remote extract, and created the Phase 2 data-audit branch/workflow. A provider-schema mismatch was caught and fixed before empirical execution (E-0004).
+
+
+## 2026-09-22 — Phase 2 extraction outcome
+
+The end-to-end remote extractor reached the data and completed the calculation. Provisional output showed 34 NIFTY target cycles and 38 SENSEX target cycles, with 29 completed four-leg cycles for each. The first automated cache push failed because the branch changed during the long-running job; the workflow was made rebase-safe before retry.
+
+
+## 2026-09-22 — Critical calendar audit correction
+
+The first end-to-end extraction produced a material methodology bug: absent spot dates were treated as exchange holidays. This caused incorrect monthly expiry dates. The error was logged as E-0007, an explicit holiday calendar was added, the common sample window was narrowed to 2026-05-27, and the extraction is being rerun before Phase 3.
+
+
+## 2026-09-22 — Phase 2 corrected result
+
+The corrected GitHub Actions extraction completed successfully using explicit holidays and the common 2025-10-01 to 2026-05-27 window. Final Phase 2 audit counts: 34 target cycles for each index, 33 complete NIFTY baskets and 28 complete SENSEX baskets. Net ROC under the locked cost/slippage assumptions was approximately -29.88% and -22.28% respectively. The initial calendar-derived result was superseded and is not used going forward.
+
+## 2026-09-22 — Final research conclusion
+
+Phases 3–6 completed. The corrected primary sample shows negative expectancy in both indices; zero-friction tests remain negative; robustness stress remains negative; CPCV-style chronological paths are predominantly negative; and the full manuscript with figures, appendices and future research is committed.

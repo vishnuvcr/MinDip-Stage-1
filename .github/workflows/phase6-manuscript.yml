@@ -1,0 +1,42 @@
+name: Phase 6 — Manuscript and Reproducibility Gate
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "docs/FINAL_MANUSCRIPT.md"
+      - "docs/LITERATURE_REVIEW.md"
+      - "docs/figures/**"
+      - "docs/PHASE*.md"
+      - "data/cache/phase3/**"
+      - "data/cache/phase4/**"
+      - "data/cache/phase5/**"
+      - ".github/workflows/phase6-manuscript.yml"
+
+jobs:
+  manuscript-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify final manuscript and figures
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s docs/FINAL_MANUSCRIPT.md
+          test -s docs/LITERATURE_REVIEW.md
+          test -s docs/figures/equity_curves.svg
+          test -s docs/figures/slippage_stress.svg
+          test -s docs/figures/leg_contribution.svg
+          test -s docs/figures/cpcv_path_sharpe.svg
+          test -s data/cache/phase3/cross_index_metrics.csv
+          test -s data/cache/phase4/cross_index_slippage_cost_summary.csv
+          test -s data/cache/phase5/cpcv_summary.csv
+      - name: Scan manuscript for unresolved placeholders
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -nE "TODO|TBD|PLACEHOLDER|FIXME" docs/FINAL_MANUSCRIPT.md
+      - name: Print primary result
+        run: |
+          cat data/cache/phase3/cross_index_metrics.csv
+          cat data/cache/phase5/cpcv_summary.csv

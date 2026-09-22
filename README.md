@@ -47,3 +47,33 @@ The reference engine in src/multileg_options_backtest.py supports both NIFTY and
 The requested 50-point NIFTY and 100-point SENSEX strike intervals are treated as **research assumptions**. Exchange contract specifications can change, so a production dataset must be reconciled with the exchange contract master and date-specific lot sizes.
 
 Phase 2 is the data-audit gate. Historical results are intentionally deferred until point-in-time option/spot data and calendar validation are available.
+
+
+## Phase 2 — Data audit
+
+Phase 2 is now active. The repository queries a pinned public 1-minute option dataset remotely and caches only a reduced strategy-specific extract, provenance metadata, checksums, and audit outputs. Raw third-party Parquet files are not copied into the repository. See `docs/DATA_SOURCE_REGISTRY.md`, `docs/PHASE2_DATA_AUDIT.md`, and the manual workflow `.github/workflows/phase2-data-audit.yml`.
+
+
+### Latest Phase 2 execution
+The first end-to-end remote extraction completed successfully and produced a small strategy-specific cache, but its automated push hit a branch-race. The workflow now rebases before pushing generated data. The provisional extraction observed 34 NIFTY and 38 SENSEX target cycles, with 29 fully executable four-leg cycles in each index; these counts are not yet treated as final until the cache is committed and audited.
+
+
+## Phase 2 corrected result
+
+The corrected common-window extraction (2025-10-01 to 2026-05-27) completed successfully in GitHub Actions. It produced 34 target cycles for each index; 33 NIFTY cycles and 28 SENSEX cycles had all four executable legs. The locked 0.5% slippage plus ₹160 cycle-cost model produced provisional net ROC of -29.88% for NIFTY and -22.28% for SENSEX over those executed samples. These are Phase 2 historical observations, not a promoted strategy recommendation; robustness and validation remain in later phases.
+
+## Final research conclusion
+
+The corrected locked backtest is complete through Phase 6. In the 2025-10-01 to 2026-05-27 common window, 33 NIFTY and 28 SENSEX baskets were fully executable. Primary net ROC was -29.88% for NIFTY and -22.28% for SENSEX. The sign remains negative at zero slippage and zero fixed cost, so the observed failure is not attributable solely to the assumed transaction-friction model. CPCV-style stability is also predominantly negative.
+
+The complete manuscript is at docs/FINAL_MANUSCRIPT.md, with figures in docs/figures/ and all phase outputs under data/cache/phase2 through data/cache/phase5.
+
+## Research map
+
+- docs/LITERATURE_REVIEW.md — literature and methodological context
+- docs/FINAL_MANUSCRIPT.md — complete final manuscript
+- docs/PHASE2_DATA_AUDIT.md — source/calendar/data audit
+- docs/PHASE3_RESULTS.md — historical performance methodology
+- docs/PHASE4_RESULTS.md — robustness and cost stress
+- docs/PHASE5_RESULTS.md — CPCV/PSR/PBO validation
+- docs/figures/ — equity, stress, leg and CPCV figures

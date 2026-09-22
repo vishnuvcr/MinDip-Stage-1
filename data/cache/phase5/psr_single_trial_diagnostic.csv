@@ -1,0 +1,3 @@
+ticker,all_trade_sharpe,psr_p_gt_zero,wins,trades,two_sided_binomial_pvalue_vs_50pct_winrate,interpretation
+NIFTY,-0.4254935448363359,0.007402166578937552,12,33,0.16275565745308995,single-frozen-trial PSR diagnostic; formal DSR multiple-testing adjustment is not identifiable
+SENSEX,-0.4001145229565493,0.027727424604898188,7,28,0.012540951371192932,single-frozen-trial PSR diagnostic; formal DSR multiple-testing adjustment is not identifiable

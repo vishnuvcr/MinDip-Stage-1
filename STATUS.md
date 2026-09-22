@@ -7,7 +7,7 @@ As of: 2026-09-22
 |---|---|---|
 | 0 Governance | Complete | Plan, instructions, status, errors, action log, CI scaffold created |
 | 1 Strategy engine | Complete pending CI/data validation | Dynamic NIFTY/SENSEX engine, cost model, expiry math, tests, workflow |
-| 2 Data audit | Not started | Requires point-in-time option + spot dataset and contract/holiday audit |
+| 2 Data audit | In progress | Remote point-in-time option/spot extraction, expiry/lot-size validation, reduced cache |
 | 3 Historical backtest | Not started | Requires cached production data |
 | 4 Robustness | Not started | Predeclared cost/liquidity/regime stress |
 | 5 CPCV/DSR/PBO | Not started | After locked backtest |
@@ -27,4 +27,4 @@ The local container cannot reach github.com directly, so local clone-based execu
 
 ## Latest completed step
 
-Phase 1 engine and documentation committed on branch phase-1-reverse-calendar-backtest.
+Phase 2 extraction code has run successfully against the remote data source; the first cache commit hit a Git race and was rejected. The workflow was patched to rebase before pushing, and the phase remains in progress until the cache is persisted and audited.
