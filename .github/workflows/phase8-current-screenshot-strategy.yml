@@ -31,6 +31,10 @@ on:
 jobs:
   backtest:
     runs-on: ubuntu-latest
+    env:
+      TICKER: ${{ inputs.ticker || 'NIFTY' }}
+      START: ${{ inputs.start || '2025-10-01' }}
+      END: ${{ inputs.end || '2026-05-27' }}
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
@@ -40,14 +44,12 @@ jobs:
       - name: Install dependencies
         run: python -m pip install pandas duckdb numpy
       - name: Run current uploaded screenshot strategy
-        env:
-          START: ${{ inputs.start || '2025-10-01' }}
-          END: ${{ inputs.end || '2026-05-27' }}
-          TICKER: ${{ inputs.ticker || 'NIFTY' }}
         run: |
           python scripts/phase8_current_screenshot_strategy.py             --start "$START"             --end "$END"             --output "data/cache/phase8/$TICKER"
       - name: Verify exact screenshot mapping
-        run: cat "data/cache/phase8/$TICKER/screenshot_strike_demo.json"
+        run: |
+          cat "data/cache/phase8/$TICKER/screenshot_strike_demo.json"
+          test -s "data/cache/phase8/$TICKER/cross_index_metrics.csv"
       - name: Show results
         run: cat "data/cache/phase8/$TICKER/cross_index_metrics.csv"
       - name: Commit reduced Phase 8 results
