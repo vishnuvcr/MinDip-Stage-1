@@ -6,8 +6,8 @@ User request: Build a comprehensive pandas/numpy backtester for the four-leg mul
 
 Visible inputs reviewed: two supplied strategy screenshots plus the repository URL.
 
-Repository state before work: empty Git repository.
+Research actions: checked current official/primary exchange expiry references; reviewed prior project research materials for execution-friction and robustness lessons; initialized repository governance; implemented Phase 1 engine, tests, documentation, and CI workflow.
 
-Actions recorded: repository initialized, governance branch created, research plan/status/error log/instructions created, external exchange-expiry sources checked, and Phase 1 implementation prepared.
+Execution note: local GitHub clone was blocked by container DNS; this was logged as E-0003. No empirical profitability result was inferred from synthetic tests.
 
 Note: this file stores the user-visible request and research actions, not private hidden chain-of-thought.
