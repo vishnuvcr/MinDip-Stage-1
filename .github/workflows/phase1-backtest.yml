@@ -1,0 +1,62 @@
+name: Phase 1 — Reverse Calendar Backtest
+
+on:
+  workflow_dispatch:
+    inputs:
+      ticker:
+        description: Index to backtest
+        required: true
+        default: NIFTY
+        type: choice
+        options:
+          - NIFTY
+          - SENSEX
+      input_csv:
+        description: Optional cached CSV path inside the repository
+        required: false
+        default: data/options/options_quotes.csv
+        type: string
+  push:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "scripts/**"
+      - "requirements.txt"
+      - ".github/workflows/phase1-backtest.yml"
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run deterministic tests
+        env:
+          PYTHONPATH: .
+        run: python -m pytest -q
+
+  cached-data-backtest:
+    if: ${{ github.event_name == 'workflow_dispatch' && hashFiles(inputs.input_csv) != '' }}
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run requested index
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m src.multileg_options_backtest             --input "${{ inputs.input_csv }}"             --ticker "${{ inputs.ticker }}"             --output-dir outputs/backtest/${{ inputs.ticker }}
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: backtest-${{ inputs.ticker }}
+          path: outputs/backtest/${{ inputs.ticker }}
