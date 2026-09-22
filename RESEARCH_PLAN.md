@@ -102,4 +102,4 @@ Remaining gate:
 
 ## Stop condition
 
-The research stops after Phase 6. A positive result is not assumed in advance. If evidence does not survive costs, robustness, or out-of-sample tests, the documented conclusion will be negative/inconclusive rather than optimized around the failure.
+For the **current uploaded screenshot strategy**, the research stops after the declared Phase 9 evidence gate is completed. Phase 9 will not optimize the strategy. If the required execution-quality evidence cannot be reconstructed, the conclusion will explicitly remain inconclusive rather than assuming favourable fills.
