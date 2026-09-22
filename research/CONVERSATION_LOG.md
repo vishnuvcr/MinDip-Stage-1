@@ -51,3 +51,8 @@ The final manuscript, figures, appendices, final conclusion, and manuscript gate
 ## 2026-09-22 — Phase 7 correction initiated
 
 User clarified that the intended strategy is the strategy slide itself, not the earlier prose parameterization. The screenshot was re-read: the visible example maps 25,049.55 spot to 25,000 monthly PE, 25,200 weekly PE, 25,050 weekly CE and 25,000 monthly CE. Phase 7 was created to retest that structure, including the slide's explicit 1-or-2-strike Leg 4 ambiguity.
+
+
+## 2026-09-23 — Latest screenshot supersedes earlier strategy definitions
+
+The user supplied two new screenshots. The editor screenshot is authoritative: NIFTY 23,329 with SELL 27-Oct 23,350 PE; BUY 27-Oct 23,250 CE; BUY 06-Oct 23,450 PE; SELL 06-Oct 23,350 CE. This is now locked as the Phase 8 strategy. The earlier Phase 7 screenshot interpretation is explicitly superseded and will not be used for the current backtest.
