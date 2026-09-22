@@ -25,15 +25,26 @@ Research repository for a reproducible, cost-aware, multi-leg index-options back
 | docs/ | Strategy, assumptions, sources, and phase results |
 | .github/workflows/ | Manual/CI research workflows |
 
-## Phase 1 implementation
+## Superseded Phase 1 specification
 
-The reference engine in src/multileg_options_backtest.py supports both NIFTY and SENSEX dynamically. It implements:
+The original Phase 1 engine remains archived for reproducibility, but its leg directions are **not** the current strategy. It implemented the original prose specification and must not be used for the current screenshot strategy.
 
-- ATM strike selection from the 09:30 spot observation;
-- monthly ATM PE buy;
-- weekly ATM+2-strike PE sell;
-- weekly ATM CE buy;
-- monthly ATM−2-strike CE sell;
+## Current strategy specification
+
+The authoritative current strategy is locked from the latest uploaded Paytm Money screenshots:
+
+- SELL monthly ATM PE;
+- BUY monthly ATM−2-strike CE;
+- BUY weekly ATM+2-strike PE;
+- SELL weekly ATM CE;
+- nearest strike is used as ATM.
+
+The Phase 8/9 implementation and results supersede the earlier written-rule experiment for the current research question.
+
+## Archived Phase 1 implementation
+
+The historical Phase 1 engine supports both NIFTY and SENSEX dynamically and remains available only for reproducibility of the superseded experiment. It implements the earlier leg-direction specification plus:
+
 - Tuesday/Thursday weekly and last-Tuesday/last-Thursday monthly expiry math;
 - previous-trading-day holiday roll;
 - first quote at/after 09:30 for entry and last quote at/before 15:15 for exit;
