@@ -75,3 +75,8 @@
 - Impact: the Phase 6 numerical conclusion cannot be treated as a conclusion about the screenshot strategy.
 - Fix: created Phase 7 with a screenshot-derived strike mapping and fresh historical extraction.
 - Prevention: keep screenshot-derived specifications separate from prose-derived parameterizations and reconcile them before empirical conclusions.
+
+### E-0013 — Phase 7 cache push race
+- Observed: The screenshot-exact extraction completed successfully, but the generated cache push lost a race with another branch update.
+- Fix: reduced the cache to strategy-specific outputs rather than full spot archives and changed the workflow to force-with-lease after rebasing.
+- Prevention: do not cache entire minute-level spot histories when the strategy output only needs the selected cycle observations.
